@@ -34,13 +34,22 @@ def download_docs():
             print(f"Downloading {library} {v['version']} docs...")
             url = REPO_URLS[library]
 
-            subprocess.run(
-                ["git", "clone", "--depth", "1", "--branch", v["branch"], url, str(target_dir)],
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
-            )
-            print(f"Downloaded {library} {v['version']} docs to {target_dir}")
+            try:
+                subprocess.run(
+                   ["git", "clone", "--no-checkout", "--depth", "1", "--filter=blob:none", "--branch", v["branch"], url, str(target_dir)],
+                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+                subprocess.run(
+                    ["git", "sparse-checkout", "set", v["docs_folder"]],
+                    cwd=target_dir, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+                subprocess.run(
+                    ["git", "checkout"],
+                    cwd=target_dir, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+                print(f"Downloaded {library} {v['version']} docs to {target_dir}")
+            except subprocess.CalledProcessError as e:
+                print(f"Error occurred while downloading {library} {v['version']} docs.")
 
 if __name__ == "__main__":
     download_docs()
