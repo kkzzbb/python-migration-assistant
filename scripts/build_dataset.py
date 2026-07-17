@@ -15,6 +15,7 @@ def main():
 	run_script("scripts/download_docs.py")
 	run_module("src.chunker")
 	run_module("src.embeddings")
+	run_module("src.keyword_search")
 	
 	print("\nDataset completely built! The RAG system is ready to use.")
 
