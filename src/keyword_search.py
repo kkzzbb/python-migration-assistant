@@ -21,6 +21,7 @@ def build_keyword_database():
 		raise FileNotFoundError(f"{CHUNKS_PATH} not found.")
 	with open(CHUNKS_PATH, "r", encoding="utf-8") as f:
 		chunks = json.load(f)
+
 	con.executemany(
 		"""INSERT INTO chunks (id, library, version, filename, heading, content)
 		VALUES (:id, :library, :version, :filename, :heading, :content)""",
@@ -36,14 +37,25 @@ class KeywordSearcher:
 	def __init__(self):
 		self.con = sqlite3.connect(KEYWORD_DB_PATH)
 		self.con.row_factory = sqlite3.Row
+	
+	def __enter__(self):
+		return self
 
-	def search(self, query:str, library: str=None, limit: int =5):
+	def __exit__(self, exe_type, exe_val, exc_tb):
+		self.close()
+	
+	def close(self):
+		self.con.close()
+	
+
+	def search(self, query:str, library: str=None, limit: int = 5):
 		words = query.split()
 		if not words:
 			return []
 		
-		fts_query = " OR ".join(f'"{w}' for w in words)
-		sql = """SELECT id, library, version, filename, heading, content, bm25(chunks) AS score
+		fts_query = " ".join(words)
+		sql = """SELECT id, library, version, filename, heading, content,
+			bm25((chunks, 0, 0, 0, 0, 5.0, 1.0)) AS score
 			FROM chunks WHERE chunks MATCH ?"""
 		params = [fts_query]
 
@@ -53,7 +65,13 @@ class KeywordSearcher:
 		sql += " ORDER BY score ASC LIMIT ?"
 		params.append(limit)
 
-		return [dict(r) for r in self.con.execute(sql, params).fetchall()]
+		results = []
+		for row in self.con.execute(sql, params).fetchall():
+			item = dict(row)
+			item["score"] = float(item["score"])
+			results.append(item)
+
+		return results
 	
 if __name__ == "__main__":
 	build_keyword_database()
