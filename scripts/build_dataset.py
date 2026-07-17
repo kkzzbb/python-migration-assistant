@@ -1,15 +1,20 @@
 import subprocess
+import sys
 
 def run_script(script_path):
 	print(f"\nRunning {script_path}...")
-	subprocess.run(["python", script_path], check=True)
+	subprocess.run([sys.executable, script_path], check=True)
+
+def run_module(module_name):
+	print(f"\nRunning module {module_name}")
+	subprocess.run([sys.executable, "-m", module_name], check=True)
 
 def main():
 	print("Starting the automated ingestion pipeline...")
 	
 	run_script("scripts/download_docs.py")
-	run_script("src/chunker.py")
-	run_script("src/embedder.py")
+	run_module("src.chunker")
+	run_module("src.embeddings")
 	
 	print("\nDataset completely built! The RAG system is ready to use.")
 

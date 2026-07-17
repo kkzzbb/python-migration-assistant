@@ -3,6 +3,8 @@ import re
 import json
 from pathlib import Path
 
+from src.config import RAW_DIR, PROCESSED_DIR, CHUNKS_PATH
+
 IGNORE_DIRS = {"images", "assets", "media", "static", ".github"}
 IGNORE_FILES = {"readme", "license", "changelog", "contributing", "authors"}
 
@@ -35,7 +37,7 @@ def chunk_section(section_text, max_words=450, overlap_words=80):
 	return chunks
 
 def process_all_files():
-	base_dir = Path("data/raw")
+	base_dir = RAW_DIR
 	all_chunks = []
 	chunk_counter = 1
 
@@ -81,13 +83,12 @@ def process_all_files():
                     			}
 					all_chunks.append(chunk_dict)
 					chunk_counter += 1
-	output_dir = Path("data/processed")
-	output_dir.mkdir(parents=True, exist_ok=True)
+	PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
-	with open(output_dir / "chunks.json", "w", encoding="utf-8") as f:
+	with open(CHUNKS_PATH, "w", encoding="utf-8") as f:
 		json.dump(all_chunks, f, indent=2)
 	print(f"Processed {len(all_chunks)} chunks.")
-	print("Saved to data/processed/chunks.json")
+	print("Saved to {CHUNKS_PATH}")
 
 if __name__ == "__main__":
 	process_all_files()
