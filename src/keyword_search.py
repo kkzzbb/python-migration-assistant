@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import re
 
 from src.config import CHUNKS_PATH, KEYWORD_DB_PATH
 
@@ -35,7 +36,7 @@ def build_keyword_database():
 
 class KeywordSearcher:
 	def __init__(self):
-		self.con = sqlite3.connect(KEYWORD_DB_PATH)
+		self.con = sqlite3.connect(KEYWORD_DB_PATH, check_same_thread=False)
 		self.con.row_factory = sqlite3.Row
 	
 	def __enter__(self):
@@ -49,14 +50,18 @@ class KeywordSearcher:
 	
 
 	def search(self, query:str, library: str=None, limit: int = 5):
-		words = query.split()
+		safe_query = re.sub(r'[^\w\s]', ' ', query)
+		words = safe_query.split()
 		if not words:
 			return []
 		
 		fts_query = " ".join(words)
-		sql = """SELECT id, library, version, filename, heading, content,
-			bm25((chunks, 0, 0, 0, 0, 5.0, 1.0)) AS score
-			FROM chunks WHERE chunks MATCH ?"""
+		sql = """
+            		SELECT id, library, version, filename, heading, content, 
+                   		rank AS score 
+            		FROM chunks 
+            		WHERE chunks MATCH ?
+        	"""
 		params = [fts_query]
 
 		if library:

@@ -13,6 +13,7 @@ def main():
 	print("Starting the automated ingestion pipeline...")
 	
 	run_script("scripts/download_docs.py")
+	run_script("scripts/fetch_github_data.py")
 	run_module("src.chunker")
 	run_module("src.embeddings")
 	run_module("src.keyword_search")

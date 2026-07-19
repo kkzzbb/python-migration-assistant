@@ -8,6 +8,17 @@ from src.config import RAW_DIR, PROCESSED_DIR, CHUNKS_PATH
 IGNORE_DIRS = {"images", "assets", "media", "static", ".github"}
 IGNORE_FILES = {"readme", "license", "changelog", "contributing", "authors"}
 
+def clean_markdown_noise(text: str) -> str:
+	text = re.sub(r'<[^>]+>', '', text)
+	noisy_terms = ["dependabot", "bump dependency", "typo", "ci update", "pre-commit", "merge pull request"]
+
+	cleaned_lines = []
+	for line in text.split('\n'):
+		if not any(noise in line.lower() for noise in noisy_terms):
+			cleaned_lines.append(line)
+
+	return "\n".join(cleaned_lines)
+
 def chunk_section(section_text, max_words=450, overlap_words=80):
 	paragraphs = section_text.split('\n\n')
 	chunks = []
@@ -57,7 +68,9 @@ def process_all_files():
 			
 			with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
 				text = f.read()
-			raw_sections = re.split(r'\n(?=#{1,6}\s)', text)
+
+			text = clean_markdown_noise(text)
+			raw_sections = re.split(r'\n(?=#{1,3}\s)', text)
 
 			for section in raw_sections:
 				section = section.strip()

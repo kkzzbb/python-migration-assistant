@@ -50,7 +50,7 @@ class MigrationAssistant:
 		user_prompt += f"## User Question\n{question}"
 
 		response = self.client.responses.create(
-            		model="gpt-4o-mini",
+            		model="gpt-5.4-mini",
             		input=[
                			{"role": "developer", "content": SYSTEM_PROMPT},
                 		{"role": "user", "content": user_prompt}
