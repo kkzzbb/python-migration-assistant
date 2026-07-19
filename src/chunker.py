@@ -19,7 +19,7 @@ def clean_markdown_noise(text: str) -> str:
 
 	return "\n".join(cleaned_lines)
 
-def chunk_section(section_text, max_words=450, overlap_words=80):
+def chunk_section(section_text, max_words=300, overlap_words=50):
 	paragraphs = section_text.split('\n\n')
 	chunks = []
 	current_chunk = []
@@ -101,7 +101,7 @@ def process_all_files():
 	with open(CHUNKS_PATH, "w", encoding="utf-8") as f:
 		json.dump(all_chunks, f, indent=2)
 	print(f"Processed {len(all_chunks)} chunks.")
-	print("Saved to {CHUNKS_PATH}")
+	print(f"Saved to {CHUNKS_PATH}")
 
 if __name__ == "__main__":
 	process_all_files()

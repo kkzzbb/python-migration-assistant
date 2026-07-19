@@ -50,15 +50,21 @@ class KeywordSearcher:
 	
 
 	def search(self, query:str, library: str=None, limit: int = 5):
-		safe_query = re.sub(r'[^\w\s]', ' ', query)
-		words = safe_query.split()
+		if not query.strip():
+			return []
+		words = [
+			w
+			for w in re.findall(r"[A-Za-z0-9_]+", query.lower())
+			if len(w) > 2
+		]
 		if not words:
 			return []
 		
-		fts_query = " ".join(words)
+		fts_query = " OR ".join(words)
+
 		sql = """
-            		SELECT id, library, version, filename, heading, content, 
-                   		rank AS score 
+            		SELECT id, library, version, filename, heading, content,
+				bm25(chunks) AS score 
             		FROM chunks 
             		WHERE chunks MATCH ?
         	"""
@@ -70,8 +76,10 @@ class KeywordSearcher:
 		sql += " ORDER BY score ASC LIMIT ?"
 		params.append(limit)
 
+		rows = self.con.execute(sql, params).fetchall()
+
 		results = []
-		for row in self.con.execute(sql, params).fetchall():
+		for row in rows:
 			item = dict(row)
 			item["score"] = float(item["score"])
 			results.append(item)

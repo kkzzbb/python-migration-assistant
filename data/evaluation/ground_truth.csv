@@ -1,0 +1,251 @@
+question,document,library
+question='Why was SQLAlchemy pinned in tests?' type='keyword',fastapi-latest-release-notes-1667,fastapi
+question='What type hints were added for mypy?' type='keyword',fastapi-latest-release-notes-1667,fastapi
+question='Which internal ignore was removed?' type='keyword',fastapi-latest-release-notes-1667,fastapi
+question='Tests started failing with SQLAlchemy versions; what changed?' type='symptom',fastapi-latest-release-notes-1667,fastapi
+question='Mypy now complains about missing annotations; what fix landed?' type='symptom',fastapi-latest-release-notes-1667,fastapi
+question='Where can I get FastAPI news updates?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
+question='Does the newsletter mention breaking changes?' type='symptom',fastapi-latest-help-fastapi-1308,fastapi
+question='What topics are covered in the FastAPI and friends newsletter?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
+question='Is there a guide section in the newsletter?' type='symptom',fastapi-latest-help-fastapi-1308,fastapi
+question='How often is the newsletter sent?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
+question='Can background task be async def?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
+question='Does the task need to be a standard function?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
+question='Can it take parameters?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
+question='Why use def instead of async def here?' type='symptom',fastapi-latest-background-tasks-2094,fastapi
+question='Will FastAPI handle both sync and async tasks?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
+question='How to forbid extra cookies?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
+question='Which model config blocks unknown cookies?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
+question='What happens if a client sends an extra cookie?' type='symptom',fastapi-latest-cookie-param-models-2017,fastapi
+question='What error does a disallowed cookie return?' type='symptom',fastapi-latest-cookie-param-models-2017,fastapi
+question='Which cookie name is shown as invalid?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
+question='How omit default fields in response?' type='keyword',fastapi-latest-response-model-1960,fastapi
+question='Can None description be skipped?' type='symptom',fastapi-latest-response-model-1960,fastapi
+question='Why is tax showing 10.5?' type='symptom',fastapi-latest-response-model-1960,fastapi
+question='Does empty tags list appear by default?' type='keyword',fastapi-latest-response-model-1960,fastapi
+question='Can optional attrs be left out?' type='symptom',fastapi-latest-response-model-1960,fastapi
+question='Can include_router take tags now?' type='keyword',fastapi-latest-release-notes-1741,fastapi
+question='Do the dev scripts need chmod?' type='symptom',fastapi-latest-release-notes-1741,fastapi
+question='Should Uvicorn docs use --reload?' type='keyword',fastapi-latest-release-notes-1741,fastapi
+question='Why are imports failing with newer isort?' type='symptom',fastapi-latest-release-notes-1741,fastapi
+question='Did the router tags option get added?' type='keyword',fastapi-latest-release-notes-1741,fastapi
+question='Can return annotations set the response model now?' type='keyword',fastapi-latest-release-notes-1637,fastapi
+question='Which checks use the annotated return type?' type='keyword',fastapi-latest-release-notes-1637,fastapi
+question='Is the old response_model arg still needed?' type='keyword',fastapi-latest-release-notes-1637,fastapi
+question='My docs changed when I added a return type' type='symptom',fastapi-latest-release-notes-1637,fastapi
+question='Can a route return list[Item] directly?' type='keyword',fastapi-latest-release-notes-1637,fastapi
+question='What replaced Hatch in the build?' type='keyword',fastapi-latest-release-notes-1565,fastapi
+question='Were unused internal scripts removed?' type='symptom',fastapi-latest-release-notes-1565,fastapi
+question='Did MkDocs Material get upgraded?' type='keyword',fastapi-latest-release-notes-1565,fastapi
+question='Are the docs cards enabled again?' type='symptom',fastapi-latest-release-notes-1565,fastapi
+question='Which internal scripts were updated?' type='keyword',fastapi-latest-release-notes-1565,fastapi
+question='How do I stop OpenAPI from using the rest of a docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+question='What does an escaped form-feed do in a path op docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+question='Can I keep extra docstring text for Sphinx only?' type='symptom',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+question='Why does part of my docstring not appear in docs?' type='symptom',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+question='How can I shorten the OpenAPI description from a function docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+question='Which template loops over sponsor groups?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
+question='What checks for a sponsor badge login list?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
+question='How are sponsor usernames printed?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
+question='Why might no sponsors appear on the page?' type='symptom',fastapi-latest-fastapi-people-1330,fastapi
+question='What content is shown under Individual Sponsors?' type='symptom',fastapi-latest-fastapi-people-1330,fastapi
+question='Who’s on the FastAPI team list?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
+question='Where are repo management tasks described?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
+question='Can team members manage the repository?' type='symptom',fastapi-latest-fastapi-people-1322,fastapi
+question='What does the page say about member permissions?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
+question='Is the current team roster generated from members data?' type='symptom',fastapi-latest-fastapi-people-1322,fastapi
+question='What was added for Platform.sh sponsorship?' type='keyword',fastapi-latest-release-notes-1598,fastapi
+question='Why add custom token to Smokeshow and Preview Docs?' type='symptom',fastapi-latest-release-notes-1598,fastapi
+question='What do the GitHub Actions custom tokens avoid?' type='keyword',fastapi-latest-release-notes-1598,fastapi
+question='Which PR added the Platform.sh sponsor?' type='keyword',fastapi-latest-release-notes-1598,fastapi
+question='Which tool got a custom token for download-artifact?' type='keyword',fastapi-latest-release-notes-1598,fastapi
+question='Why use `response_model` here?' type='keyword',fastapi-latest-response-model-1950,fastapi
+question='Why does the editor flag the return type?' type='symptom',fastapi-latest-response-model-1950,fastapi
+question='Can I annotate this as `UserOut`?' type='keyword',fastapi-latest-response-model-1950,fastapi
+question='What if request and output models differ?' type='symptom',fastapi-latest-response-model-1950,fastapi
+question='Where should the output schema be set?' type='keyword',fastapi-latest-response-model-1950,fastapi
+question='Why inherit from `str` too?' type='keyword',fastapi-latest-path-params-1985,fastapi
+question='How do I define the valid values list?' type='keyword',fastapi-latest-path-params-1985,fastapi
+question='Will docs show them as strings?' type='symptom',fastapi-latest-path-params-1985,fastapi
+question='Can the enum values be fixed names?' type='keyword',fastapi-latest-path-params-1985,fastapi
+question='What are AlexNet and ResNet here?' type='symptom',fastapi-latest-path-params-1985,fastapi
+question='Which args build custom Swagger UI pages?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
+question='Can I use app.openapi_url for docs?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
+question='What URL feeds the Swagger JS file?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
+question='Do I need the redirect helper for OAuth2?' type='symptom',fastapi-latest-custom-docs-ui-assets-2698,fastapi
+question='How is the ReDoc page created here?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
+question='Where can I follow tiangolo?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
+question='Is tiangolo on GitHub?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
+question='Does he use Bluesky?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
+question='Can I find him on LinkedIn?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
+question='Is there an X account?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
+question='Who usually handles HTTPS for the app container?' type='symptom',fastapi-latest-docker-1904,fastapi
+question='Can Traefik manage certificates automatically?' type='keyword',fastapi-latest-docker-1904,fastapi
+question='Does the container image include HTTPS setup?' type='symptom',fastapi-latest-docker-1904,fastapi
+question='What can sit in front of FastAPI for HTTPS?' type='keyword',fastapi-latest-docker-1904,fastapi
+question='Can a cloud service terminate HTTPS for the container?' type='keyword',fastapi-latest-docker-1904,fastapi
+question='How are `timedelta` strings parsed?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
+question='Can `Field(le=...)` limit a duration?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
+question='What does JSON output for a `timedelta`?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
+question='Why does a numeric duration get treated as seconds?' type='symptom',pydantic-v2-standard_library_types-1019,pydantic
+question='Why is a non-RFC 3339 duration rejected in strict JSON?' type='symptom',pydantic-v2-standard_library_types-1019,pydantic
+question='How can I exclude a field at serialization time?' type='keyword',pydantic-v2-serialization-0933,pydantic
+question='Can I use a field condition to drop values?' type='keyword',pydantic-v2-serialization-0933,pydantic
+question='Where do I set serialization excludes on a model field?' type='keyword',pydantic-v2-serialization-0933,pydantic
+question='Is exclusion handled in Field() or dump options?' type='keyword',pydantic-v2-serialization-0933,pydantic
+question='Why is a field missing from my output?' type='symptom',pydantic-v2-serialization-0933,pydantic
+question='Does v2 still ship the Hypothesis plugin?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
+question='Can Hypothesis handle typing and stdlib generics by default?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
+question='Why was the built-in Hypothesis integration removed?' type='symptom',pydantic-v2-hypothesis-1000,pydantic
+question='Will the plugin come back later?' type='symptom',pydantic-v2-hypothesis-1000,pydantic
+question='What issue tracks updates on this?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
+question='How does `Field(exclude=True)` affect `model_dump()`?' type='keyword',pydantic-v2-fields-0805,pydantic
+question='When is `exclude_if` available?' type='keyword',pydantic-v2-fields-0805,pydantic
+question='Can one field be missing from export by default?' type='symptom',pydantic-v2-fields-0805,pydantic
+question='Why is `age` gone from my dumped model?' type='symptom',pydantic-v2-fields-0805,pydantic
+question='Which method shows excluded fields are omitted?' type='keyword',pydantic-v2-fields-0805,pydantic
+question='What replaces ConstrainedInt?' type='keyword',pydantic-v2-migration-0655,pydantic
+question='Can I still subclass ConstrainedStr?' type='keyword',pydantic-v2-migration-0655,pydantic
+question='How do I set ge on an int now?' type='keyword',pydantic-v2-migration-0655,pydantic
+question='My constrained field stopped working after the upgrade' type='symptom',pydantic-v2-migration-0655,pydantic
+question='What should I use for constrained strings?' type='keyword',pydantic-v2-migration-0655,pydantic
+question='How is Sequence handled here?' type='keyword',pydantic-v1-types-0327,pydantic
+question='Can Iterable hold an endless generator?' type='keyword',pydantic-v1-types-0327,pydantic
+"question=""Why aren't Iterable items checked?"" type='symptom'",pydantic-v1-types-0327,pydantic
+question='How do I validate only the first item?' type='keyword',pydantic-v1-types-0327,pydantic
+question='Will a remote loader be consumed?' type='symptom',pydantic-v1-types-0327,pydantic
+question='Why use quoted type hints here?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
+question='What does `from __future__ import annotations` change?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
+question='Why would `Node` raise `NameError`?' type='symptom',pydantic-v2-resolving_annotations-0690,pydantic
+question='How are annotations stored in `Foo.__annotations__`?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
+question='Can Pydantic read type hints at runtime?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
+question='How does Owner validate item type?' type='keyword',pydantic-v2-types-0863,pydantic
+question='Can Owner work without type params?' type='symptom',pydantic-v2-types-0863,pydantic
+question='Why use generate_schema for item?' type='keyword',pydantic-v2-types-0863,pydantic
+question='How is JSON turned into Owner?' type='keyword',pydantic-v2-types-0863,pydantic
+question='What error appears for wrong subtypes?' type='symptom',pydantic-v2-types-0863,pydantic
+question='Which change caches setter functions for models?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
+question='What fixes the invalid discriminated union variant message?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
+question='Did FastAPI tests get turned back on?' type='symptom',pydantic-v2-HISTORY-0418,pydantic
+question='Why did parametrized models stop being cached during nesting?' type='symptom',pydantic-v2-HISTORY-0418,pydantic
+question='Which DSN gained extra allowed schemes?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
+question='Why is my AwareDatetime field failing on naive datetimes?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
+question='What triggers the timezone_aware error?' type='keyword',pydantic-v2-validation_errors-1147,pydantic
+question='Can datetime.now() cause timezone_aware here?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
+question='Which field type expects timezone info?' type='keyword',pydantic-v2-validation_errors-1147,pydantic
+question='How do I avoid timezone_aware on validation?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
+question='Which PR gave @rmorshea their first contribution?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
+question='Who first contributed in #12868?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
+question='Did @ai-man-codes debut in #12907?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
+question='Which contributor was new in #12953?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
+question='What compare link is listed for the changelog?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
+"question='Why does JSON date parsing fail on a string like ""1""?' type='symptom'",pydantic-v2-validation_errors-1070,pydantic
+question='What error type appears for an invalid date string in JSON?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
+question='Does strict date validation reject string input here?' type='symptom',pydantic-v2-validation_errors-1070,pydantic
+question='Which field type is used in this example?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
+question='Which method validates the JSON payload?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
+question='Why does a timedelta field reject None?' type='symptom',pydantic-v2-validation_errors-1144,pydantic
+question='When is time_delta_type raised?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
+question='How does strict timedelta validation behave?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
+question='Why isn’t a non-timedelta value accepted?' type='symptom',pydantic-v2-validation_errors-1144,pydantic
+question='What type error appears for timedelta fields?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
+question='How do root validators run with pre=True?' type='keyword',pydantic-v1-validators-0246,pydantic
+question='Can a pre root validator stop field validation?' type='symptom',pydantic-v1-validators-0246,pydantic
+question='When are post root validators called?' type='keyword',pydantic-v1-validators-0246,pydantic
+question='How to skip root validation after earlier failures?' type='keyword',pydantic-v1-validators-0246,pydantic
+question='What does values contain in a root validator?' type='keyword',pydantic-v1-validators-0246,pydantic
+question='Can it read GraphQL schema?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
+question='Does it handle OpenAPI 3 YAML?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
+question='Will CSV inputs generate models?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
+question='Can it start from a Python dict?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
+question='Does it work from JSON Schema?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
+question='Where did parse_obj_as move to?' type='keyword',pydantic-v2-migration-0659,pydantic
+question='What replaced validate_arguments?' type='keyword',pydantic-v2-migration-0659,pydantic
+question='My deep_update import broke; what path now?' type='symptom',pydantic-v2-migration-0659,pydantic
+question='Where is root_validator in v2?' type='keyword',pydantic-v2-migration-0659,pydantic
+question='Why is pydantic_encoder missing after upgrade?' type='symptom',pydantic-v2-migration-0659,pydantic
+question='What does copy_on_model_validation accept now?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
+question='How do I get deep-copy validation again?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
+question='Did model fields stop being deep copied by default?' type='symptom',pydantic-v2-HISTORY-0527,pydantic
+question='What is the default copy mode for model validation?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
+question='Can I disable copying of model fields?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
+question='Does Query joining use synonym() now?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+question='Can MetaData take an engine or URL first?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+question='Why does my foreign key need a schema name now?' type='symptom',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+question='Can I still use BoundMetaData?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+question='Why are duplicate column names causing bad result detection?' type='symptom',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+question='When does pending become persistent?' type='keyword',sqlalchemy-v1.4-session_events-3423,sqlalchemy
+question='What event tracks load into persistent?' type='keyword',sqlalchemy-v1.4-session_events-3423,sqlalchemy
+question='Can rollback make pending transient?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
+question='Does delete() issue SQL right away?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
+question='What happens to deleted on commit?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
+question='Does add_column() get deprecated?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+question='When will Query.join() error on a self-join?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+question='What logger gets psycopg2 NOTICE output?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+question='Why does TINYINT(1) stop coming back as boolean?' type='symptom',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+question='Can mixin foreign-key columns be used?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+question='Why does Session.execute now return Result here?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+question='Can returned columns work in a CTE returning?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+question='Why is the async cursor actually closed now?' type='symptom',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+question='Why did my MutableList behavior change after typing?' type='symptom',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+question='Will a PEP 695 alias resolve from its mapped value?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+question='What env var enables RemovedIn20Warning?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+question='Which warning filter shows every deprecation?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+question='How do I turn warnings into errors?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+question='Why does my legacy call still run without noise?' type='symptom',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+question='How can I find the bad line in a warning?' type='symptom',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+question='What does dbapi_connection replace?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
+question='How do I get the raw async connection?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
+question='Is driver_connection the same on sync DBAPI?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
+question='Why reset settings before returning to pool?' type='symptom',sqlalchemy-v1.4-connections-3204,sqlalchemy
+question='What does detach do on close?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
+question='How does join(User.addresses) set the ON clause?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+"question='Why won’t join_from(User, Address) use relationships?' type='keyword'",sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+question='How do I join to an aliased address?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+question='Can relationship() drive join inference automatically?' type='symptom',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+question='Why are two address aliases joined with of_type()?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+question='What happens if a PK can’t be sorted during flush?' type='symptom',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+question='Did MappedCollection drop its converter?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+question='Which naming tokens were added for multi-column constraints?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+question='Can ShardedQuery bulk update and delete now?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+question='How are empty IN lists rendered now?' type='symptom',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+question='How do I speed up bulk inserts?' type='symptom',sqlalchemy-v1.4-performance-3182,sqlalchemy
+question='Why is the ORM slow for 400k rows?' type='symptom',sqlalchemy-v1.4-performance-3182,sqlalchemy
+question='Should I use Core for inserts?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
+question='What do bulk operations do?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
+question='Can psycopg2 batch helpers help?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
+question='Why does inserted_primary_key come back None?' type='symptom',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+question='Should I import sqlalchemy.exceptions directly?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+question='What replaced ConnectionProxy timing hooks?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+question='Do Integer and Date take args now?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+question='What is compile_mappers() called now?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+question='Did after_insert fire once per row now?' type='symptom',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+question='What changed in mapper compilation?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+question='Why does lazy load now fail outside a session?' type='symptom',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+question='Does QueuePool raise TimeoutError on timeout?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+question='Has ConnectionFairy.cursor() gained extra args?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+question='Does Query.statement carry params now?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+question='Why does query.order_by(False) behave differently from None?' type='symptom',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+question='Can make_transient() be used on related objects now?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+question='Why do expired attrs on transient objects raise errors?' type='symptom',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+question='Did subquery eager loading start working with params() queries?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+question='What does statement caching speed up?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+question='How much faster are repeated ORM queries?' type='symptom',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+question='What is lambda_stmt used for?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+question='Can the lambda scan changing bound values?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+question='Why are many small queries improved most?' type='symptom',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+question='Which method was fixed for pool cursors?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+question='How are Integer and SmallInteger treated now?' type='symptom',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+question='Can alias() of an alias() be cloned now?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+question='What changed for alternate-schema indexes on SQLite?' type='symptom',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+question='What name is used for TrustedConnection in pyodbc args?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+question='What is TypeEngine the base of?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+question='Can a type class be used without ()?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+question='Which type maps to VARCHAR?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+question='Why does Boolean render differently on backends?' type='symptom',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+question='Are CamelCase types backend portable?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+question='Why did MySQL add a KEY for autoinc PKs?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+question='Can I keep PK order with PrimaryKeyConstraint?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+question='Does autoincrement now default to auto?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+question='When is the SQLite right-nested join fix removed?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+question='Are dotted column name workarounds still needed on SQLite 3.10.0?' type='symptom',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
