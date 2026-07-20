@@ -4,37 +4,25 @@ import random
 from dotenv import load_dotenv
 from openai import OpenAI
 from pydantic import BaseModel
-from typing import Literal
-from pydantic import BaseModel
 from src.config import CHUNKS_PATH, EVAL_DIR, GROUND_TRUTH_PATH
 
-class Question(BaseModel):
-	question: str
-	type: Literal["keyword", "symptom"]
-
 class Questions(BaseModel):
-	questions: list[Question]
+	questions: list[str]
 
 data_gen_instructions = """
-You emulate a developer migrating a FastAPI, Pydantic, or SQLAlchemy project.
+You emulate a Python developer upgrading an application (FastAPI, Pydantic, or SQLAlchemy).
 
-Generate exactly 5 realistic questions answerable using ONLY the provided documentation.
-
-For each question, assign one type:
-
-- keyword: mentions APIs, decorators, classes, functions, or migration terms.
-- symptom: describes a migration problem or unexpected behavior without relying on API names.
+Generate exactly 5 realistic migration questions that can be answered using ONLY this documentation chunk.
 
 Rules:
-1. Choose the type naturally; do not force any ratio.
-2. Every question must be answerable from this documentation.
+1. Questions should resemble real GitHub Issues or Stack Overflow posts.
+2. Mention specific APIs, decorators, classes, configuration options, or migration concepts when appropriate.
 3. Use wording different from the documentation.
-4. Keep questions short and realistic.
+4. Keep questions short, specific, and realistic.
 5. Avoid generic questions like:
    - "How do I migrate to Pydantic v2?"
    - "What's new?"
-6. if possible use fewer words
-7. Do not invent information.
+6. Do not invent information or migration rules outside this chunk.
 """.strip()
 
 def generate_ground_truth(chunk, client):

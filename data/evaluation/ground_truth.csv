@@ -1,251 +1,251 @@
 question,document,library
-question='Why was SQLAlchemy pinned in tests?' type='keyword',fastapi-latest-release-notes-1667,fastapi
-question='What type hints were added for mypy?' type='keyword',fastapi-latest-release-notes-1667,fastapi
-question='Which internal ignore was removed?' type='keyword',fastapi-latest-release-notes-1667,fastapi
-question='Tests started failing with SQLAlchemy versions; what changed?' type='symptom',fastapi-latest-release-notes-1667,fastapi
-question='Mypy now complains about missing annotations; what fix landed?' type='symptom',fastapi-latest-release-notes-1667,fastapi
-question='Where can I get FastAPI news updates?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
-question='Does the newsletter mention breaking changes?' type='symptom',fastapi-latest-help-fastapi-1308,fastapi
-question='What topics are covered in the FastAPI and friends newsletter?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
-question='Is there a guide section in the newsletter?' type='symptom',fastapi-latest-help-fastapi-1308,fastapi
-question='How often is the newsletter sent?' type='keyword',fastapi-latest-help-fastapi-1308,fastapi
-question='Can background task be async def?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
-question='Does the task need to be a standard function?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
-question='Can it take parameters?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
-question='Why use def instead of async def here?' type='symptom',fastapi-latest-background-tasks-2094,fastapi
-question='Will FastAPI handle both sync and async tasks?' type='keyword',fastapi-latest-background-tasks-2094,fastapi
-question='How to forbid extra cookies?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
-question='Which model config blocks unknown cookies?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
-question='What happens if a client sends an extra cookie?' type='symptom',fastapi-latest-cookie-param-models-2017,fastapi
-question='What error does a disallowed cookie return?' type='symptom',fastapi-latest-cookie-param-models-2017,fastapi
-question='Which cookie name is shown as invalid?' type='keyword',fastapi-latest-cookie-param-models-2017,fastapi
-question='How omit default fields in response?' type='keyword',fastapi-latest-response-model-1960,fastapi
-question='Can None description be skipped?' type='symptom',fastapi-latest-response-model-1960,fastapi
-question='Why is tax showing 10.5?' type='symptom',fastapi-latest-response-model-1960,fastapi
-question='Does empty tags list appear by default?' type='keyword',fastapi-latest-response-model-1960,fastapi
-question='Can optional attrs be left out?' type='symptom',fastapi-latest-response-model-1960,fastapi
-question='Can include_router take tags now?' type='keyword',fastapi-latest-release-notes-1741,fastapi
-question='Do the dev scripts need chmod?' type='symptom',fastapi-latest-release-notes-1741,fastapi
-question='Should Uvicorn docs use --reload?' type='keyword',fastapi-latest-release-notes-1741,fastapi
-question='Why are imports failing with newer isort?' type='symptom',fastapi-latest-release-notes-1741,fastapi
-question='Did the router tags option get added?' type='keyword',fastapi-latest-release-notes-1741,fastapi
-question='Can return annotations set the response model now?' type='keyword',fastapi-latest-release-notes-1637,fastapi
-question='Which checks use the annotated return type?' type='keyword',fastapi-latest-release-notes-1637,fastapi
-question='Is the old response_model arg still needed?' type='keyword',fastapi-latest-release-notes-1637,fastapi
-question='My docs changed when I added a return type' type='symptom',fastapi-latest-release-notes-1637,fastapi
-question='Can a route return list[Item] directly?' type='keyword',fastapi-latest-release-notes-1637,fastapi
-question='What replaced Hatch in the build?' type='keyword',fastapi-latest-release-notes-1565,fastapi
-question='Were unused internal scripts removed?' type='symptom',fastapi-latest-release-notes-1565,fastapi
-question='Did MkDocs Material get upgraded?' type='keyword',fastapi-latest-release-notes-1565,fastapi
-question='Are the docs cards enabled again?' type='symptom',fastapi-latest-release-notes-1565,fastapi
-question='Which internal scripts were updated?' type='keyword',fastapi-latest-release-notes-1565,fastapi
-question='How do I stop OpenAPI from using the rest of a docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
-question='What does an escaped form-feed do in a path op docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
-question='Can I keep extra docstring text for Sphinx only?' type='symptom',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
-question='Why does part of my docstring not appear in docs?' type='symptom',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
-question='How can I shorten the OpenAPI description from a function docstring?' type='keyword',fastapi-latest-path-operation-advanced-configuration-2481,fastapi
-question='Which template loops over sponsor groups?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
-question='What checks for a sponsor badge login list?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
-question='How are sponsor usernames printed?' type='keyword',fastapi-latest-fastapi-people-1330,fastapi
-question='Why might no sponsors appear on the page?' type='symptom',fastapi-latest-fastapi-people-1330,fastapi
-question='What content is shown under Individual Sponsors?' type='symptom',fastapi-latest-fastapi-people-1330,fastapi
-question='Who’s on the FastAPI team list?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
-question='Where are repo management tasks described?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
-question='Can team members manage the repository?' type='symptom',fastapi-latest-fastapi-people-1322,fastapi
-question='What does the page say about member permissions?' type='keyword',fastapi-latest-fastapi-people-1322,fastapi
-question='Is the current team roster generated from members data?' type='symptom',fastapi-latest-fastapi-people-1322,fastapi
-question='What was added for Platform.sh sponsorship?' type='keyword',fastapi-latest-release-notes-1598,fastapi
-question='Why add custom token to Smokeshow and Preview Docs?' type='symptom',fastapi-latest-release-notes-1598,fastapi
-question='What do the GitHub Actions custom tokens avoid?' type='keyword',fastapi-latest-release-notes-1598,fastapi
-question='Which PR added the Platform.sh sponsor?' type='keyword',fastapi-latest-release-notes-1598,fastapi
-question='Which tool got a custom token for download-artifact?' type='keyword',fastapi-latest-release-notes-1598,fastapi
-question='Why use `response_model` here?' type='keyword',fastapi-latest-response-model-1950,fastapi
-question='Why does the editor flag the return type?' type='symptom',fastapi-latest-response-model-1950,fastapi
-question='Can I annotate this as `UserOut`?' type='keyword',fastapi-latest-response-model-1950,fastapi
-question='What if request and output models differ?' type='symptom',fastapi-latest-response-model-1950,fastapi
-question='Where should the output schema be set?' type='keyword',fastapi-latest-response-model-1950,fastapi
-question='Why inherit from `str` too?' type='keyword',fastapi-latest-path-params-1985,fastapi
-question='How do I define the valid values list?' type='keyword',fastapi-latest-path-params-1985,fastapi
-question='Will docs show them as strings?' type='symptom',fastapi-latest-path-params-1985,fastapi
-question='Can the enum values be fixed names?' type='keyword',fastapi-latest-path-params-1985,fastapi
-question='What are AlexNet and ResNet here?' type='symptom',fastapi-latest-path-params-1985,fastapi
-question='Which args build custom Swagger UI pages?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
-question='Can I use app.openapi_url for docs?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
-question='What URL feeds the Swagger JS file?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
-question='Do I need the redirect helper for OAuth2?' type='symptom',fastapi-latest-custom-docs-ui-assets-2698,fastapi
-question='How is the ReDoc page created here?' type='keyword',fastapi-latest-custom-docs-ui-assets-2698,fastapi
-question='Where can I follow tiangolo?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
-question='Is tiangolo on GitHub?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
-question='Does he use Bluesky?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
-question='Can I find him on LinkedIn?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
-question='Is there an X account?' type='keyword',fastapi-latest-help-fastapi-1312,fastapi
-question='Who usually handles HTTPS for the app container?' type='symptom',fastapi-latest-docker-1904,fastapi
-question='Can Traefik manage certificates automatically?' type='keyword',fastapi-latest-docker-1904,fastapi
-question='Does the container image include HTTPS setup?' type='symptom',fastapi-latest-docker-1904,fastapi
-question='What can sit in front of FastAPI for HTTPS?' type='keyword',fastapi-latest-docker-1904,fastapi
-question='Can a cloud service terminate HTTPS for the container?' type='keyword',fastapi-latest-docker-1904,fastapi
-question='How are `timedelta` strings parsed?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
-question='Can `Field(le=...)` limit a duration?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
-question='What does JSON output for a `timedelta`?' type='keyword',pydantic-v2-standard_library_types-1019,pydantic
-question='Why does a numeric duration get treated as seconds?' type='symptom',pydantic-v2-standard_library_types-1019,pydantic
-question='Why is a non-RFC 3339 duration rejected in strict JSON?' type='symptom',pydantic-v2-standard_library_types-1019,pydantic
-question='How can I exclude a field at serialization time?' type='keyword',pydantic-v2-serialization-0933,pydantic
-question='Can I use a field condition to drop values?' type='keyword',pydantic-v2-serialization-0933,pydantic
-question='Where do I set serialization excludes on a model field?' type='keyword',pydantic-v2-serialization-0933,pydantic
-question='Is exclusion handled in Field() or dump options?' type='keyword',pydantic-v2-serialization-0933,pydantic
-question='Why is a field missing from my output?' type='symptom',pydantic-v2-serialization-0933,pydantic
-question='Does v2 still ship the Hypothesis plugin?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
-question='Can Hypothesis handle typing and stdlib generics by default?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
-question='Why was the built-in Hypothesis integration removed?' type='symptom',pydantic-v2-hypothesis-1000,pydantic
-question='Will the plugin come back later?' type='symptom',pydantic-v2-hypothesis-1000,pydantic
-question='What issue tracks updates on this?' type='keyword',pydantic-v2-hypothesis-1000,pydantic
-question='How does `Field(exclude=True)` affect `model_dump()`?' type='keyword',pydantic-v2-fields-0805,pydantic
-question='When is `exclude_if` available?' type='keyword',pydantic-v2-fields-0805,pydantic
-question='Can one field be missing from export by default?' type='symptom',pydantic-v2-fields-0805,pydantic
-question='Why is `age` gone from my dumped model?' type='symptom',pydantic-v2-fields-0805,pydantic
-question='Which method shows excluded fields are omitted?' type='keyword',pydantic-v2-fields-0805,pydantic
-question='What replaces ConstrainedInt?' type='keyword',pydantic-v2-migration-0655,pydantic
-question='Can I still subclass ConstrainedStr?' type='keyword',pydantic-v2-migration-0655,pydantic
-question='How do I set ge on an int now?' type='keyword',pydantic-v2-migration-0655,pydantic
-question='My constrained field stopped working after the upgrade' type='symptom',pydantic-v2-migration-0655,pydantic
-question='What should I use for constrained strings?' type='keyword',pydantic-v2-migration-0655,pydantic
-question='How is Sequence handled here?' type='keyword',pydantic-v1-types-0327,pydantic
-question='Can Iterable hold an endless generator?' type='keyword',pydantic-v1-types-0327,pydantic
-"question=""Why aren't Iterable items checked?"" type='symptom'",pydantic-v1-types-0327,pydantic
-question='How do I validate only the first item?' type='keyword',pydantic-v1-types-0327,pydantic
-question='Will a remote loader be consumed?' type='symptom',pydantic-v1-types-0327,pydantic
-question='Why use quoted type hints here?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
-question='What does `from __future__ import annotations` change?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
-question='Why would `Node` raise `NameError`?' type='symptom',pydantic-v2-resolving_annotations-0690,pydantic
-question='How are annotations stored in `Foo.__annotations__`?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
-question='Can Pydantic read type hints at runtime?' type='keyword',pydantic-v2-resolving_annotations-0690,pydantic
-question='How does Owner validate item type?' type='keyword',pydantic-v2-types-0863,pydantic
-question='Can Owner work without type params?' type='symptom',pydantic-v2-types-0863,pydantic
-question='Why use generate_schema for item?' type='keyword',pydantic-v2-types-0863,pydantic
-question='How is JSON turned into Owner?' type='keyword',pydantic-v2-types-0863,pydantic
-question='What error appears for wrong subtypes?' type='symptom',pydantic-v2-types-0863,pydantic
-question='Which change caches setter functions for models?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
-question='What fixes the invalid discriminated union variant message?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
-question='Did FastAPI tests get turned back on?' type='symptom',pydantic-v2-HISTORY-0418,pydantic
-question='Why did parametrized models stop being cached during nesting?' type='symptom',pydantic-v2-HISTORY-0418,pydantic
-question='Which DSN gained extra allowed schemes?' type='keyword',pydantic-v2-HISTORY-0418,pydantic
-question='Why is my AwareDatetime field failing on naive datetimes?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
-question='What triggers the timezone_aware error?' type='keyword',pydantic-v2-validation_errors-1147,pydantic
-question='Can datetime.now() cause timezone_aware here?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
-question='Which field type expects timezone info?' type='keyword',pydantic-v2-validation_errors-1147,pydantic
-question='How do I avoid timezone_aware on validation?' type='symptom',pydantic-v2-validation_errors-1147,pydantic
-question='Which PR gave @rmorshea their first contribution?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
-question='Who first contributed in #12868?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
-question='Did @ai-man-codes debut in #12907?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
-question='Which contributor was new in #12953?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
-question='What compare link is listed for the changelog?' type='keyword',pydantic-releases-pydantic_releases-0014,pydantic
-"question='Why does JSON date parsing fail on a string like ""1""?' type='symptom'",pydantic-v2-validation_errors-1070,pydantic
-question='What error type appears for an invalid date string in JSON?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
-question='Does strict date validation reject string input here?' type='symptom',pydantic-v2-validation_errors-1070,pydantic
-question='Which field type is used in this example?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
-question='Which method validates the JSON payload?' type='keyword',pydantic-v2-validation_errors-1070,pydantic
-question='Why does a timedelta field reject None?' type='symptom',pydantic-v2-validation_errors-1144,pydantic
-question='When is time_delta_type raised?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
-question='How does strict timedelta validation behave?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
-question='Why isn’t a non-timedelta value accepted?' type='symptom',pydantic-v2-validation_errors-1144,pydantic
-question='What type error appears for timedelta fields?' type='keyword',pydantic-v2-validation_errors-1144,pydantic
-question='How do root validators run with pre=True?' type='keyword',pydantic-v1-validators-0246,pydantic
-question='Can a pre root validator stop field validation?' type='symptom',pydantic-v1-validators-0246,pydantic
-question='When are post root validators called?' type='keyword',pydantic-v1-validators-0246,pydantic
-question='How to skip root validation after earlier failures?' type='keyword',pydantic-v1-validators-0246,pydantic
-question='What does values contain in a root validator?' type='keyword',pydantic-v1-validators-0246,pydantic
-question='Can it read GraphQL schema?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
-question='Does it handle OpenAPI 3 YAML?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
-question='Will CSV inputs generate models?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
-question='Can it start from a Python dict?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
-question='Does it work from JSON Schema?' type='keyword',pydantic-v2-datamodel_code_generator-0995,pydantic
-question='Where did parse_obj_as move to?' type='keyword',pydantic-v2-migration-0659,pydantic
-question='What replaced validate_arguments?' type='keyword',pydantic-v2-migration-0659,pydantic
-question='My deep_update import broke; what path now?' type='symptom',pydantic-v2-migration-0659,pydantic
-question='Where is root_validator in v2?' type='keyword',pydantic-v2-migration-0659,pydantic
-question='Why is pydantic_encoder missing after upgrade?' type='symptom',pydantic-v2-migration-0659,pydantic
-question='What does copy_on_model_validation accept now?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
-question='How do I get deep-copy validation again?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
-question='Did model fields stop being deep copied by default?' type='symptom',pydantic-v2-HISTORY-0527,pydantic
-question='What is the default copy mode for model validation?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
-question='Can I disable copying of model fields?' type='keyword',pydantic-v2-HISTORY-0527,pydantic
-question='Does Query joining use synonym() now?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
-question='Can MetaData take an engine or URL first?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
-question='Why does my foreign key need a schema name now?' type='symptom',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
-question='Can I still use BoundMetaData?' type='keyword',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
-question='Why are duplicate column names causing bad result detection?' type='symptom',sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
-question='When does pending become persistent?' type='keyword',sqlalchemy-v1.4-session_events-3423,sqlalchemy
-question='What event tracks load into persistent?' type='keyword',sqlalchemy-v1.4-session_events-3423,sqlalchemy
-question='Can rollback make pending transient?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
-question='Does delete() issue SQL right away?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
-question='What happens to deleted on commit?' type='symptom',sqlalchemy-v1.4-session_events-3423,sqlalchemy
-question='Does add_column() get deprecated?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
-question='When will Query.join() error on a self-join?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
-question='What logger gets psycopg2 NOTICE output?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
-question='Why does TINYINT(1) stop coming back as boolean?' type='symptom',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
-question='Can mixin foreign-key columns be used?' type='keyword',sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
-question='Why does Session.execute now return Result here?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
-question='Can returned columns work in a CTE returning?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
-question='Why is the async cursor actually closed now?' type='symptom',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
-question='Why did my MutableList behavior change after typing?' type='symptom',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
-question='Will a PEP 695 alias resolve from its mapped value?' type='keyword',sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
-question='What env var enables RemovedIn20Warning?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
-question='Which warning filter shows every deprecation?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
-question='How do I turn warnings into errors?' type='keyword',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
-question='Why does my legacy call still run without noise?' type='symptom',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
-question='How can I find the bad line in a warning?' type='symptom',sqlalchemy-v1.4-migration_20-4181,sqlalchemy
-question='What does dbapi_connection replace?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
-question='How do I get the raw async connection?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
-question='Is driver_connection the same on sync DBAPI?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
-question='Why reset settings before returning to pool?' type='symptom',sqlalchemy-v1.4-connections-3204,sqlalchemy
-question='What does detach do on close?' type='keyword',sqlalchemy-v1.4-connections-3204,sqlalchemy
-question='How does join(User.addresses) set the ON clause?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
-"question='Why won’t join_from(User, Address) use relationships?' type='keyword'",sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
-question='How do I join to an aliased address?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
-question='Can relationship() drive join inference automatically?' type='symptom',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
-question='Why are two address aliases joined with of_type()?' type='keyword',sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
-question='What happens if a PK can’t be sorted during flush?' type='symptom',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
-question='Did MappedCollection drop its converter?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
-question='Which naming tokens were added for multi-column constraints?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
-question='Can ShardedQuery bulk update and delete now?' type='keyword',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
-question='How are empty IN lists rendered now?' type='symptom',sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
-question='How do I speed up bulk inserts?' type='symptom',sqlalchemy-v1.4-performance-3182,sqlalchemy
-question='Why is the ORM slow for 400k rows?' type='symptom',sqlalchemy-v1.4-performance-3182,sqlalchemy
-question='Should I use Core for inserts?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
-question='What do bulk operations do?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
-question='Can psycopg2 batch helpers help?' type='keyword',sqlalchemy-v1.4-performance-3182,sqlalchemy
-question='Why does inserted_primary_key come back None?' type='symptom',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
-question='Should I import sqlalchemy.exceptions directly?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
-question='What replaced ConnectionProxy timing hooks?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
-question='Do Integer and Date take args now?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
-question='What is compile_mappers() called now?' type='keyword',sqlalchemy-v1.4-migration_07-4273,sqlalchemy
-question='Did after_insert fire once per row now?' type='symptom',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
-question='What changed in mapper compilation?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
-question='Why does lazy load now fail outside a session?' type='symptom',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
-question='Does QueuePool raise TimeoutError on timeout?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
-question='Has ConnectionFairy.cursor() gained extra args?' type='keyword',sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
-question='Does Query.statement carry params now?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
-question='Why does query.order_by(False) behave differently from None?' type='symptom',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
-question='Can make_transient() be used on related objects now?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
-question='Why do expired attrs on transient objects raise errors?' type='symptom',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
-question='Did subquery eager loading start working with params() queries?' type='keyword',sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
-question='What does statement caching speed up?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
-question='How much faster are repeated ORM queries?' type='symptom',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
-question='What is lambda_stmt used for?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
-question='Can the lambda scan changing bound values?' type='keyword',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
-question='Why are many small queries improved most?' type='symptom',sqlalchemy-v1.4-migration_14-3886,sqlalchemy
-question='Which method was fixed for pool cursors?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
-question='How are Integer and SmallInteger treated now?' type='symptom',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
-question='Can alias() of an alias() be cloned now?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
-question='What changed for alternate-schema indexes on SQLite?' type='symptom',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
-question='What name is used for TrustedConnection in pyodbc args?' type='keyword',sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
-question='What is TypeEngine the base of?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
-question='Can a type class be used without ()?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
-question='Which type maps to VARCHAR?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
-question='Why does Boolean render differently on backends?' type='symptom',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
-question='Are CamelCase types backend portable?' type='keyword',sqlalchemy-v1.4-type_basics-2960,sqlalchemy
-question='Why did MySQL add a KEY for autoinc PKs?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
-question='Can I keep PK order with PrimaryKeyConstraint?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
-question='Does autoincrement now default to auto?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
-question='When is the SQLite right-nested join fix removed?' type='keyword',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
-question='Are dotted column name workarounds still needed on SQLite 3.10.0?' type='symptom',sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+Why did FastAPI start pinning the SQLAlchemy version range in tests instead of relying on SemVer?,fastapi-latest-release-notes-1667,fastapi
+What changed with the new type annotations needed for mypy checks in FastAPI?,fastapi-latest-release-notes-1667,fastapi
+"Which internal `type: ignore` comments were removed, and are they still needed when upgrading?",fastapi-latest-release-notes-1667,fastapi
+Do I need to adjust my project’s SQLAlchemy test dependencies because of the new version pinning?,fastapi-latest-release-notes-1667,fastapi
+"After the mypy annotation update, are there any FastAPI internals that now require explicit typing?",fastapi-latest-release-notes-1667,fastapi
+Where do I subscribe if I want FastAPI breaking changes and feature updates in one place?,fastapi-latest-help-fastapi-1308,fastapi
+Is the FastAPI and friends newsletter the recommended source for guides and tips/tricks?,fastapi-latest-help-fastapi-1308,fastapi
+"How often does the FastAPI newsletter get sent out, and does it cover breaking changes?",fastapi-latest-help-fastapi-1308,fastapi
+Can I use the newsletter to keep track of FastAPI release news and migration-related updates?,fastapi-latest-help-fastapi-1308,fastapi
+What kind of updates are included in the FastAPI and friends newsletter besides general news?,fastapi-latest-help-fastapi-1308,fastapi
+"Can I pass parameters into a FastAPI `BackgroundTasks` function, or does it have to be a zero-arg callback?",fastapi-latest-background-tasks-2094,fastapi
+"If my background task is defined with `async def` instead of `def`, will FastAPI still execute it correctly?",fastapi-latest-background-tasks-2094,fastapi
+"For a file-writing background task in FastAPI, is it better to use `def` when the code doesn't use `await`?",fastapi-latest-background-tasks-2094,fastapi
+Does FastAPI handle both normal functions and coroutine functions when adding a task to `BackgroundTasks`?,fastapi-latest-background-tasks-2094,fastapi
+"In a background task that simulates sending an email by writing to disk, should the task function be synchronous or async?",fastapi-latest-background-tasks-2094,fastapi
+How do I make a cookie Pydantic model reject unexpected cookies with `extra='forbid'` in FastAPI?,fastapi-latest-cookie-param-models-2017,fastapi
+"If I send an extra cookie like `santa_tracker`, why does FastAPI return `type: extra_forbidden` instead of ignoring it?",fastapi-latest-cookie-param-models-2017,fastapi
+Where should I set Pydantic model config so a cookie model only accepts the declared cookie fields?,fastapi-latest-cookie-param-models-2017,fastapi
+"Does FastAPI support forbidding extra cookies on a cookie parameter model, or will it always accept unknown cookie names?",fastapi-latest-cookie-param-models-2017,fastapi
+What error payload should I expect when a client sends an undeclared cookie to an endpoint using a cookie model?,fastapi-latest-cookie-param-models-2017,fastapi
+How do I stop FastAPI from returning default `None` and `[]` values in a response model when they weren’t stored?,fastapi-latest-response-model-1960,fastapi
+"In a response model like `description: str | None = None` and `tags: list[str] = []`, is there a way to leave those fields out of the JSON result?",fastapi-latest-response-model-1960,fastapi
+My `response_model` includes defaults such as `tax: float = 10.5`; can FastAPI encode the response without including that default if the database row doesn’t have it?,fastapi-latest-response-model-1960,fastapi
+"For models backed by NoSQL data, how can I avoid very long responses filled with optional fields that just use the schema defaults?",fastapi-latest-response-model-1960,fastapi
+"If a FastAPI response model has many optional attributes with defaults, what is the recommended way to omit them from the returned payload when they aren’t present in storage?",fastapi-latest-response-model-1960,fastapi
+How do I pass `tags` when calling `app.include_router()` in 0.8.0?,fastapi-latest-release-notes-1741,fastapi
+Did `include_router()` gain support for router tags in this release?,fastapi-latest-release-notes-1741,fastapi
+Which Uvicorn startup flag should I use now that the docs were updated for version 0.5.x?,fastapi-latest-release-notes-1741,fastapi
+Why were the development scripts made executable in 0.8.0?,fastapi-latest-release-notes-1741,fastapi
+Were the `isort` import changes only for compatibility with newer `isort` versions?,fastapi-latest-release-notes-1741,fastapi
+Can I replace `response_model=Item` with `async def read_items() -> list[Item]` on `@app.get` and still get validation/docs?,fastapi-latest-release-notes-1637,fastapi
+"If I annotate a route as `-> list[Item]`, does FastAPI filter the response data the same way as `response_model` did?",fastapi-latest-release-notes-1637,fastapi
+"Does FastAPI now treat the function return annotation as the response schema for OpenAPI generation, or do I still need `response_model`?",fastapi-latest-release-notes-1637,fastapi
+"Is `@app.get('/items/')` with `-> list[Item]` supported for automatic client generation, or only for docs?",fastapi-latest-release-notes-1637,fastapi
+"Before this change, was the only way to declare the response schema the `response_model` parameter on the path operation decorator?",fastapi-latest-release-notes-1637,fastapi
+What changed in the internal build setup after migrating from Hatch to PDM?,fastapi-latest-release-notes-1565,fastapi
+"Do the docs still use MkDocs Material cards after PR #11466, or was anything else required?",fastapi-latest-release-notes-1565,fastapi
+Which internal scripts were removed in the latest FastAPI release notes?,fastapi-latest-release-notes-1565,fastapi
+"Is the Hatch-based internal build workflow still supported, or should it be replaced with PDM now?",fastapi-latest-release-notes-1565,fastapi
+Did the MkDocs Material upgrade affect any internal documentation features besides cards?,fastapi-latest-release-notes-1565,fastapi
+Can I use `\f` in a path operation docstring to keep the OpenAPI description short while preserving the rest for Sphinx?,fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+Why does my route docstring stop showing after an escaped form feed when FastAPI builds the OpenAPI schema?,fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+Is there a way to hide the remainder of a path operation function docstring from Swagger UI but still let Sphinx read it?,fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+"Does FastAPI always truncate the OpenAPI description at `\f`, or only in path operation function docstrings?",fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+I added `\f` to a handler docstring and the docs lost the last lines — is that expected behavior for OpenAPI generation?,fastapi-latest-path-operation-advanced-configuration-2481,fastapi
+"In `fastapi-people.md`, why are some GitHub Sponsors usernames skipped when rendering `@{{ user.login }}`?",fastapi-latest-fastapi-people-1330,fastapi
+How does the `if user.login not in sponsors_badge.logins` check affect the Individual Sponsors list?,fastapi-latest-fastapi-people-1330,fastapi
+What data structure is expected for `github_sponsors.sponsors` in this Jinja template?,fastapi-latest-fastapi-people-1330,fastapi
+Why does the template loop over `group in github_sponsors.sponsors` and then `user in group` instead of iterating directly?,fastapi-latest-fastapi-people-1330,fastapi
+What is the purpose of the `sponsors_badge.logins` filter in the Individual Sponsors section?,fastapi-latest-fastapi-people-1330,fastapi
+"Where is the current FastAPI team member list maintained, and can I rely on this page as the source of truth?",fastapi-latest-fastapi-people-1322,fastapi
+Are the people listed here the same users who can perform repository management tasks on the FastAPI repo?,fastapi-latest-fastapi-people-1322,fastapi
+What does the page mean by different levels of involvement and permissions for the team members?,fastapi-latest-fastapi-people-1322,fastapi
+"Is the team roster generated from the `members[""members""]` template variable, or is it handwritten?",fastapi-latest-fastapi-people-1322,fastapi
+Which documentation page explains the repository management tasks referenced by the team list?,fastapi-latest-fastapi-people-1322,fastapi
+"Did PR #9646 change how Smokeshow or Preview Docs authenticate downloads in GitHub Actions, or was it only a CI token update?",fastapi-latest-release-notes-1598,fastapi
+"What exactly was added for GitHub Actions in PR #9647 to avoid API rate limits, and does it require any config changes?",fastapi-latest-release-notes-1598,fastapi
+Does the Platform.sh sponsor addition in PR #9650 affect FastAPI's docs build or any runtime behavior?,fastapi-latest-release-notes-1598,fastapi
+"Were the custom tokens in PR #9646 and PR #9647 introduced for the same rate-limit issue, or do they cover different services?",fastapi-latest-release-notes-1598,fastapi
+Is there any migration step needed for projects using the download-artifact workflow after these internal changes?,fastapi-latest-release-notes-1598,fastapi
+"In a FastAPI route, why does my editor flag `return db_user` as invalid when the function is annotated with `-> UserOut`, but `response_model=UserOut` works?",fastapi-latest-response-model-1950,fastapi
+Should I use the endpoint return annotation or `response_model` when my internal model and output schema are different classes?,fastapi-latest-response-model-1950,fastapi
+I have two separate Pydantic models for input/output; why does FastAPI require `response_model` instead of just `-> UserOut`?,fastapi-latest-response-model-1950,fastapi
+Why do type checkers complain if I annotate my path operation with `UserOut` but actually return a different model instance?,fastapi-latest-response-model-1950,fastapi
+"For a route returning a database user object, when is `response_model` needed instead of relying on the function return type?",fastapi-latest-response-model-1950,fastapi
+Should my path parameter Enum inherit from both `str` and `Enum` so FastAPI's docs render the values as strings?,fastapi-latest-path-params-1985,fastapi
+"I changed a path param to a plain `Enum`, but the OpenAPI schema stopped showing string values—do I need `class ModelName(str, Enum)`?",fastapi-latest-path-params-1985,fastapi
+"When defining fixed path choices like `alexnet`, `resnet`, and `lenet`, is `str` inheritance required for FastAPI to validate them as string params?",fastapi-latest-path-params-1985,fastapi
+Is `Enum` plus `str` the recommended pattern for path parameters if I want the available values to appear correctly in the generated docs?,fastapi-latest-path-params-1985,fastapi
+"Do I need to create class attributes on a `str, Enum` subclass for FastAPI to expose the allowed path values in the API docs?",fastapi-latest-path-params-1985,fastapi
+"When I create a custom `/docs` route, should I pass `app.openapi_url` directly into `get_swagger_ui_html()`?",fastapi-latest-custom-docs-ui-assets-2698,fastapi
+"For a self-hosted Swagger UI, which arguments do I need to override for the JS and CSS assets?",fastapi-latest-custom-docs-ui-assets-2698,fastapi
+Do I still need `app.swagger_ui_oauth2_redirect_url` when wiring a custom Swagger UI page with OAuth2?,fastapi-latest-custom-docs-ui-assets-2698,fastapi
+Is there an equivalent helper for ReDoc when I build my own docs endpoint instead of using the default pages?,fastapi-latest-custom-docs-ui-assets-2698,fastapi
+"What is the purpose of the `swagger_ui_redirect` path operation, and is it only needed for OAuth2 flows?",fastapi-latest-custom-docs-ui-assets-2698,fastapi
+"Is @tiangolo still the right GitHub account to follow for FastAPI updates, or has it moved elsewhere?",fastapi-latest-help-fastapi-1312,fastapi
+The docs list X and Bluesky links for Sebastián Ramírez — are both still the official places for FastAPI announcements?,fastapi-latest-help-fastapi-1312,fastapi
+"Should I follow @tiangolo on LinkedIn for release news, or is that more for personal updates?",fastapi-latest-help-fastapi-1312,fastapi
+The help page says to follow the author on GitHub; is there a FastAPI-specific profile or just the tiangolo account?,fastapi-latest-help-fastapi-1312,fastapi
+"Does the FastAPI docs page intentionally point to tiangolo.com as the author’s site for news, or is there another place I should watch?",fastapi-latest-help-fastapi-1312,fastapi
+"In the Docker deployment guide, do I need to enable HTTPS inside the FastAPI container itself, or is it expected to be terminated by something like Traefik outside the app container?",fastapi-latest-docker-1904,fastapi
+"If I run FastAPI in Docker, can a separate Traefik container handle certificate acquisition automatically for the app, or does the app image need any HTTPS config?",fastapi-latest-docker-1904,fastapi
+"Does this deployment doc assume HTTPS is provided by the cloud platform instead of the FastAPI container, even when the app is still running in Docker?",fastapi-latest-docker-1904,fastapi
+"For a containerized FastAPI app, is Traefik recommended only for reverse proxying, or specifically for HTTPS and automatic cert management in front of the container?",fastapi-latest-docker-1904,fastapi
+"When deploying FastAPI with Docker, should I configure SSL in the application container, or rely on an external service like Traefik or a cloud provider for HTTPS?",fastapi-latest-docker-1904,fastapi
+"In Pydantic v2, does `Field(le=timedelta(...))` work for a `timedelta` field, or do I need the `Le`/`Ge` annotated-types metadata?",pydantic-v2-standard_library_types-1019,pydantic
+"Why does `Model(td='P3DT12H30M5S')` parse, but a numeric value is treated as seconds for `datetime.timedelta`?",pydantic-v2-standard_library_types-1019,pydantic
+What exactly does `model_dump_json()` return for a `timedelta` field in JSON mode—ISO/RFC3339 string or seconds?,pydantic-v2-standard_library_types-1019,pydantic
+"In strict mode, can a `timedelta` field still accept a RFC 3339 string in JSON, or only an actual `datetime.timedelta` instance?",pydantic-v2-standard_library_types-1019,pydantic
+"Are `bytes` inputs allowed for `timedelta` validation in v2, and are they parsed using the same RFC 3339 time format as strings?",pydantic-v2-standard_library_types-1019,pydantic
+"In Pydantic v2, can I set `exclude` on `Field()` to omit a model field from `model_dump()`, or do I have to pass an exclude option at serialization time?",pydantic-v2-serialization-0933,pydantic
+What’s the difference between `exclude` and `exclude_if` on `Field()` when controlling serialized output?,pydantic-v2-serialization-0933,pydantic
+"Does `model_dump()` respect field-level `exclude` settings from `Field()`, or only the serialization arguments?",pydantic-v2-serialization-0933,pydantic
+Can `exclude_if` be used to skip a field only when its value matches a condition during serialization?,pydantic-v2-serialization-0933,pydantic
+"For serialization, should inclusion/exclusion be configured in the model definition with `Field()` or via the serialization methods themselves?",pydantic-v2-serialization-0933,pydantic
+Why did my Pydantic v2 install stop generating Hypothesis strategies for BaseModel classes?,pydantic-v2-hypothesis-1000,pydantic
+"Is the integrated Hypothesis plugin removed in v2.0, or is there a flag to turn it back on?",pydantic-v2-hypothesis-1000,pydantic
+"After upgrading to Pydantic v2, do type-annotated classes still work with Hypothesis out of the box?",pydantic-v2-hypothesis-1000,pydantic
+I relied on Pydantic's Hypothesis integration for builtin and typing_extensions types—what changed in v2?,pydantic-v2-hypothesis-1000,pydantic
+"Does Pydantic v2 ship any built-in Hypothesis support, or do I need a separate plugin now?",pydantic-v2-hypothesis-1000,pydantic
+How do I stop a `BaseModel` field from appearing in `model_dump()` using `Field(...)`?,pydantic-v2-fields-0805,pydantic
+"Does `Field(exclude=True)` only affect `model_dump()`, or is the field removed from the model itself?",pydantic-v2-fields-0805,pydantic
+What’s the difference between `exclude` and `exclude_if` when exporting a Pydantic v2 model?,pydantic-v2-fields-0805,pydantic
+Can I mark a field like `age: int = Field(exclude=True)` and still instantiate the model normally?,pydantic-v2-fields-0805,pydantic
+"Is `exclude_if` available in Pydantic v2.12, and how is it used for field exclusion?",pydantic-v2-fields-0805,pydantic
+How should I replace a `ConstrainedInt` subclass that only sets `ge = 0` in a model field?,pydantic-v2-migration-0655,pydantic
+"Can `ConstrainedStr` be migrated to `Annotated`, or is `StringConstraints` the recommended replacement?",pydantic-v2-migration-0655,pydantic
+"Is `Annotated[int, Field(ge=0)]` the direct equivalent for a custom `MyInt(ConstrainedInt)` type?",pydantic-v2-migration-0655,pydantic
+"In Pydantic v2, are the old `Constrained*` base classes still supported anywhere, or must they all be removed?",pydantic-v2-migration-0655,pydantic
+What’s the migration path for a field typed as `x: MyInt` when `MyInt` used to inherit from `ConstrainedInt`?,pydantic-v2-migration-0655,pydantic
+"In Pydantic v1, if I switch a field from `Sequence[int]` to `Iterable[int]` for an infinite generator, will the generator still be consumed or stored as a list on the model?",pydantic-v1-types-0327,pydantic
+"My `Iterable` field accepts a remote data loader, but the item types aren’t being checked. Is that expected, or should `Iterable[int]` validate each yielded value?",pydantic-v1-types-0327,pydantic
+"For an infinite generator field, can I use a validator to inspect only the first yielded item without exhausting the iterator?",pydantic-v1-types-0327,pydantic
+"If I keep using `Sequence` with a generator input, does Pydantic validate the subtype and materialize the values before storing them?",pydantic-v1-types-0327,pydantic
+"What is the recommended pattern if I need full value validation for an infinite generator, given that `Iterable` won’t consume it?",pydantic-v1-types-0327,pydantic
+"In a `BaseModel` with `from __future__ import annotations`, why does `Foo.__annotations__` still show `'MyType'` instead of the evaluated type?",pydantic-v2-resolving_annotations-0690,pydantic
+"When can I rely on postponed evaluation of annotations in Pydantic, and do I still need to quote forward references manually?",pydantic-v2-resolving_annotations-0690,pydantic
+"Why does a constructor annotation like `def __init__(self, l: Node, r: Node)` raise `NameError` when `Node` is defined later in the module?",pydantic-v2-resolving_annotations-0690,pydantic
+Is the `type MyType = int` alias treated as a string annotation under `from __future__ import annotations` when Pydantic inspects the model?,pydantic-v2-resolving_annotations-0690,pydantic
+"For Pydantic schema generation at runtime, does it read the raw `__annotations__` mapping or the resolved Python types?",pydantic-v2-resolving_annotations-0690,pydantic
+How do I implement `__get_pydantic_core_schema__` for a generic dataclass like `Owner[T]` so `Owner[Car]` and `Owner[House]` validate their `item` field correctly?,pydantic-v2-types-0863,pydantic
+"In a custom generic type schema, should I call `handler(item_tp)` or `handler.generate_schema(item_tp)` for the inner type, and does this chunk prefer one over the other?",pydantic-v2-types-0863,pydantic
+"How can I make `Owner` accept both `Owner(name=..., item=...)` instances in Python and a JSON object with `name` and `item` keys?",pydantic-v2-types-0863,pydantic
+"What does `core_schema.chain_schema` do in the `Owner` example, and why is `is_instance_schema(cls)` placed before the item validator?",pydantic-v2-types-0863,pydantic
+"If `Owner` is used without type parameters as `x: Owner`, how should `source_type` be handled so `item` falls back to `Any`?",pydantic-v2-types-0863,pydantic
+"Why does `TypeAdapter.__repr__` now show a different string after upgrading, and is that expected?",pydantic-v2-HISTORY-0418,pydantic
+Did the mypy plugin change how `final` fields with defaults are treated as class variables?,pydantic-v2-HISTORY-0418,pydantic
+"Can `validation_alias` now be recognized by the mypy plugin, and do I need to update anything in my models?",pydantic-v2-HISTORY-0418,pydantic
+Why did discriminated union errors change for invalid variants in the new release?,pydantic-v2-HISTORY-0418,pydantic
+"Are `WithJsonSchema` schemas still shared between models, or was the mutation bug fixed?",pydantic-v2-HISTORY-0418,pydantic
+Why does `AwareDatetime` reject `datetime.now()` values with no tzinfo and raise `timezone_aware`?,pydantic-v2-validation_errors-1147,pydantic
+I’m migrating a model field from `datetime` to `AwareDatetime`; what input shape triggers the `timezone_aware` validation error?,pydantic-v2-validation_errors-1147,pydantic
+"In a `BaseModel`, how do I reproduce the `'timezone_aware'` error shown for `x: AwareDatetime`?",pydantic-v2-validation_errors-1147,pydantic
+"Does `AwareDatetime` require an offset-aware `datetime`, and will a naive `datetime` from `datetime.now()` always fail validation?",pydantic-v2-validation_errors-1147,pydantic
+"When catching `ValidationError`, why is `exc.errors()[0]['type']` equal to `'timezone_aware'` for an aware-datetime field?",pydantic-v2-validation_errors-1147,pydantic
+"Which PR added support for `@N3XT3R1337`, and is it safe to backport that change to our fork?",pydantic-releases-pydantic_releases-0014,pydantic
+I only see the v2.13.0b2...v2.13.0b3 changelog link here—does this release include any migration-breaking changes or only contributor updates?,pydantic-releases-pydantic_releases-0014,pydantic
+"Was `#12910` the first Pydantic contribution from `@rmorshea`, and can I use that PR as a reference when reviewing similar patches?",pydantic-releases-pydantic_releases-0014,pydantic
+Do the new contributor entries in this release correspond to any code paths I should watch for regressions during upgrade testing?,pydantic-releases-pydantic_releases-0014,pydantic
+"For a downstream package pinned to `v2.13.0b3`, is there any functional difference implied by these contributor-only release notes?",pydantic-releases-pydantic_releases-0014,pydantic
+Why does `Model.model_validate_json(json.dumps({'x': '1'}))` raise a `date_parsing` error for a `date` field with `Field(strict=True)`?,pydantic-v2-validation_errors-1070,pydantic
+"In Pydantic v2, is `date_parsing` only triggered when using `model_validate_json()` with a JSON string input?",pydantic-v2-validation_errors-1070,pydantic
+"What input shape does a strict `date` field accept here, given that `'1'` fails with `ValidationError.errors()[0]['type'] == 'date_parsing'`?",pydantic-v2-validation_errors-1070,pydantic
+How can I reproduce the `date_parsing` validation error on a `BaseModel` field typed as `datetime.date` in v2?,pydantic-v2-validation_errors-1070,pydantic
+Does `Field(strict=True)` change the error type for invalid JSON date strings to `date_parsing` instead of another validation error?,pydantic-v2-validation_errors-1070,pydantic
+Why does `Model(x=None)` on a `timedelta` field now raise `time_delta_type` instead of coercing?,pydantic-v2-validation_errors-1144,pydantic
+"In strict mode, is `timedelta` validation limited to actual `datetime.timedelta` instances only?",pydantic-v2-validation_errors-1144,pydantic
+What input types are accepted for a `BaseModel` field annotated as `timedelta` in Pydantic v2?,pydantic-v2-validation_errors-1144,pydantic
+How can I detect the `time_delta_type` error from `ValidationError.errors()` for a `timedelta` field?,pydantic-v2-validation_errors-1144,pydantic
+Is `time_delta_type` also emitted when a strict `timedelta` field gets a non-`timedelta` value?,pydantic-v2-validation_errors-1144,pydantic
+"In a `@root_validator(pre=True)`, am I supposed to work with raw input data instead of parsed field values?",pydantic-v1-validators-0246,pydantic
+Why does my `pre=True` root validator stop field validation from running when it raises a `ValueError`?,pydantic-v1-validators-0246,pydantic
+"For a normal `@root_validator`, why is it still being called even though a field validator already failed?",pydantic-v1-validators-0246,pydantic
+How does `skip_on_failure=True` change the behavior of a post root validator when earlier validation errors exist?,pydantic-v1-validators-0246,pydantic
+What exactly is included in the `values` dict passed to a root validator after field validation?,pydantic-v1-validators-0246,pydantic
+"Can datamodel-code-generator take a GraphQL schema and generate Pydantic v2 models directly, or does it need conversion first?",pydantic-v2-datamodel_code_generator-0995,pydantic
+"Does datamodel-code-generator support generating models from CSV input, and is that treated as JSON Schema internally?",pydantic-v2-datamodel_code_generator-0995,pydantic
+I have an OpenAPI 3 YAML file for my API; can datamodel-code-generator turn it into nested Pydantic models?,pydantic-v2-datamodel_code_generator-0995,pydantic
+Is a plain Python dict a valid source for datamodel-code-generator when migrating a schema to Pydantic models?,pydantic-v2-datamodel_code_generator-0995,pydantic
+"If I only have JSON data, does datamodel-code-generator generate Pydantic models from it or from an intermediate JSON Schema?",pydantic-v2-datamodel_code_generator-0995,pydantic
+Where should I import `parse_obj_as` from in Pydantic v2 if my code used `pydantic.tools.parse_obj_as`?,pydantic-v2-migration-0659,pydantic
+I still have `@validate_arguments` on a function; what is the v2 import path for that decorator?,pydantic-v2-migration-0659,pydantic
+What is the replacement for `pydantic.class_validators.root_validator` in Pydantic v2?,pydantic-v2-migration-0659,pydantic
+My code imports `GetterDict` from `pydantic.utils`; which module should I use now?,pydantic-v2-migration-0659,pydantic
+"Has `pydantic.json.ENCODERS_BY_TYPE` been moved in v2, and if so what is the new import path?",pydantic-v2-migration-0659,pydantic
+"In v1.9.2, is `Config.copy_on_model_validation` required to be one of `'none'`, `'deep'`, or `'shallow'` now, and what happens if I leave it unset?",pydantic-v2-HISTORY-0527,pydantic
+"After upgrading from v1.9.1, how do I restore the old shallow model-field behavior instead of the new default deep copy?",pydantic-v2-HISTORY-0527,pydantic
+"Does `copy_on_model_validation = 'deep'` fully revert the v1.9.1 field-copy change, or is there anything else needed in `Config`?",pydantic-v2-HISTORY-0527,pydantic
+"For models relying on shared nested objects, should I set `copy_on_model_validation = 'none'` or `'shallow'` in v1.9.2?",pydantic-v2-HISTORY-0527,pydantic
+"Why was the model-field copy default reverted in v1.9.2, and can I opt back into deep-copy validation with a config setting?",pydantic-v2-HISTORY-0527,pydantic
+Why does Mapper now warn when two primary key columns with the same name get folded into one attribute on a join?,sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+Do synonym() properties work with Query.join() and Query.with_parent() in this release?,sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+"Is ForeignKey('users.id') enough for a table in a non-default schema, or do I need the schema-qualified form?",sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+Can MetaData now be created with an Engine or URL directly instead of using BoundMetaData?,sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+"How should I replace DynamicMetaData now that it’s renamed to ThreadLocalMetaData, especially when threadlocal=False?",sqlalchemy-v1.4-changelog_03-3941,sqlalchemy
+How can I hook into the flush-time INSERT transition from `pending` to `persistent` with `SessionEvents.pending_to_persistent`?,sqlalchemy-v1.4-session_events-3423,sqlalchemy
+"In my session event listener, `Session.delete()` fires but the object never looks deleted until flush—what event should I use to detect the actual `persistent_to_deleted` transition?",sqlalchemy-v1.4-session_events-3423,sqlalchemy
+"Is `SessionEvents.loaded_as_persistent` the same as `InstanceEvents.load`, and when would I prefer the session-level hook?",sqlalchemy-v1.4-session_events-3423,sqlalchemy
+What event catches a pending object going back to transient after `Session.rollback()` or `Session.expunge()` before flush?,sqlalchemy-v1.4-session_events-3423,sqlalchemy
+"After rolling back a transaction where a new object was inserted, which event reports the object reverting from persistent back to transient?",sqlalchemy-v1.4-session_events-3423,sqlalchemy
+"Why does `Query.join()` now raise when the path would end up as `FROM A JOIN A`, and is there a workaround for self-joins?",sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+"I still have code using `Query.add_column(col)`; should I switch to `add_columns(*columns)`, and is `add_column()` only deprecated now?",sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+"How strict is `Query.join(Cls.propname, from_joinpoint=True)` after this change, and why does it behave like `Query.join(""propname"", from_joinpoint=True)` when the class doesn't match the current joinpoint?",sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+"How do I use the new `select().with_hint(table_or_alias, text, dialect_name=None)` API for Oracle/MySQL hints, and where does the hint appear in the generated SQL?",sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+"After upgrading, `TINYINT(1)` on MySQL is no longer reflected as `Boolean`; is there a way to keep boolean conversion without changing the database schema?",sqlalchemy-v1.4-changelog_06-3684,sqlalchemy
+"Why does `Session.execute()` now type as `Result` for ORM insert/update/delete statements instead of `CursorResult`, and what should I use if I need `.rowcount`?",sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+Did the `UpdateBase.returning()` change affect CTEs when the RETURNING clause uses labeled expressions from returned columns?,sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+How does the async cursor close behavior change for `aioodbc`/`aiomysql`/`asyncmy` when a plain `Result` is returned without awaiting methods?,sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+"In ORM Annotated Declarative, can a `PEP 695` type alias be resolved through its immediate value in `type_annotation_map`, or must it be listed directly?",sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+"Is recursive lookup of `PEP 695` aliases still allowed in `Mapped[]` annotations, or is it still deprecated/disallowed like in 2.1?",sqlalchemy-v2.0-changelog_20-5959,sqlalchemy
+How do I enable `RemovedIn20Warning` in SQLAlchemy 1.4 so my legacy calls start emitting deprecation warnings?,sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+Why does `engine.execute()` still work on 1.4 unless I set `SQLALCHEMY_WARN_20=1`?,sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+What warning filter should I use with `SQLALCHEMY_WARN_20=1` to make sure no deprecations are hidden?,sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+Is `-W error::DeprecationWarning` the right way to turn these 2.0 deprecation warnings into exceptions?,sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+Why does the example using `engine.execute(select([foo.c.id]))` need 2.0 warnings mode to surface the legacy API usage?,sqlalchemy-v1.4-migration_20-4181,sqlalchemy
+"In 1.4.24, should I stop using `._ConnectionFairy.connection` and switch to `dbapi_connection` everywhere, or is `connection` still safe for pool code?",sqlalchemy-v1.4-connections-3204,sqlalchemy
+"With `AsyncConnection`, do I need `await conn.get_raw_connection()` before touching `driver_connection`, or can I read it directly from `conn`?",sqlalchemy-v1.4-connections-3204,sqlalchemy
+What is the difference between `dbapi_connection` and `driver_connection` on `_ConnectionFairy` when using an asyncio driver?,sqlalchemy-v1.4-connections-3204,sqlalchemy
+"If I'm changing isolation level on a pooled connection, is `Connection.detach()` the supported way to avoid leaking that state back to the pool?",sqlalchemy-v1.4-connections-3204,sqlalchemy
+"For a normal synchronous PEP-249 driver, are `dbapi_connection` and `driver_connection` always the same object, or can they diverge?",sqlalchemy-v1.4-connections-3204,sqlalchemy
+"In SQLAlchemy 1.4, why does `select(User).join(User.addresses)` work, but `select(User).join(Address)` still relies on the `ForeignKeyConstraint` instead of the `relationship()` mapping?",sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+How do I join to an `aliased(Address)` target using `User.addresses.of_type(address_alias)` instead of writing an explicit ON clause?,sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+"Does `Select.join_from(User, Address)` use the `User.addresses` relationship for ON-clause inference, or only the table foreign key?",sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+"When joining the same `relationship()` twice with two aliases, is `of_type()` the supported way to distinguish `address_1` and `address_2` in the query?",sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+Can `relationship()` be passed directly to `Select.join()` as the single argument to set both the right side and the ON clause?,sqlalchemy-v1.4-orm_related_objects-3165,sqlalchemy
+Why does ORM flush on Python 3 now raise a more informative error for primary keys like Enum values without __lt__()?,sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+"After upgrading, my MappedCollection bulk assignment stopped raising TypeError on mismatched dict keys — is the collection converter gone?",sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+"How do I use the new column_0N_name token in a naming convention, and will long constraint names still be truncated deterministically?",sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+"Can ShardedQuery now call Query.update() and Query.delete() for bulk operations, or do I need to hook _execute_crud too?",sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+What happens when an expanding IN bindparam gets an empty list now — does SQLAlchemy generate a backend-specific empty-set expression?,sqlalchemy-v1.4-changelog_13-4359,sqlalchemy
+"When inserting ~400k ORM objects, is there any way to skip unit-of-work bookkeeping or should I switch to chunked inserts?",sqlalchemy-v1.4-performance-3182,sqlalchemy
+"For bulk loads, should I use the ORM’s `bulk_operations` methods or drop down to Core `INSERT` for better performance?",sqlalchemy-v1.4-performance-3182,sqlalchemy
+"Does the psycopg2 dialect support batch execution helpers directly now, and how do I enable that for bulk inserts?",sqlalchemy-v1.4-performance-3182,sqlalchemy
+"Why does SQLAlchemy need to fetch `last inserted id` for every row when using the ORM, and can I avoid that?",sqlalchemy-v1.4-performance-3182,sqlalchemy
+"Is `session.query(...).join(...)` in the profiling example expected to be slower than Core-level inserts, or am I reading the profile wrong?",sqlalchemy-v1.4-performance-3182,sqlalchemy
+"Why does `result.inserted_primary_key` now come back as `None` for an `Integer` PK with `server_default`, and should I switch that default to a Python-side `default`?",sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+"After reflecting a table with an int primary key `server_default`, why is the `autoincrement` flag set to `False` now?",sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+"What should I import instead of `sqlalchemy.exceptions`, and is `from sqlalchemy import exceptions` still supported?",sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+I have a timing recipe based on `ConnectionProxy`; should I replace it with `before_cursor_execute()` / `after_cursor_execute()` event handlers?,sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+"`Integer()` used to accept args in my code; is that deprecated now, and should I be using a dialect-specific type like `sqlalchemy.dialects.mysql.INTEGER` instead?",sqlalchemy-v1.4-migration_07-4273,sqlalchemy
+"Did `after_insert`, `after_delete`, and `after_update` mapper extensions stop firing once per table row?",sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+Why does `lazy load` now raise instead of returning `[]` or `None` when the parent object isn’t in a `Session`?,sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+Is `Session.update()` still rejecting objects from a previous session unless I explicitly remove them first?,sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+"What changed in `QueuePool` timeout handling, and should I expect a `TimeoutError` instead of a fallback connection attempt?",sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+Why does PostgreSQL skip `SERIAL` on a primary key column when there’s also a foreign key constraint?,sqlalchemy-v1.4-changelog_02-4211,sqlalchemy
+Why does `Query.statement` no longer drop values from `query.params()` when I call it on a parametrized ORM query?,sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+`subqueryload()` seems broken for queries that use `.params()` or `Query.get()` in my app—was this fixed to support those cases?,sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+"After calling `make_transient()` on a child object linked by many-to-one, my parent FK stays set instead of becoming `None`; is that expected now?",sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+What is the difference between passing `False` vs `None` to `Query.order_by()` in this release?,sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+I moved an instance to transient state and now reading an expired attribute raises `InvalidRequestError` instead of recursing forever; is that the new behavior?,sqlalchemy-v2.0-changelog_06-5304,sqlalchemy
+"In 1.4, do normal ORM queries like `session.query(Customer).filter(Customer.id == id_).one()` get statement caching automatically, or do I need to enable anything?",sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+"What does `lambda_stmt()` cache in the new style example, and is it meant to replace the old baked query extension?",sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+Can the lambda SQL feature detect changing bound literals like `id_` on each call without rebuilding the whole statement?,sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+"Does the caching described here only speed up SQL string generation, or does it also cache ORM result-loading and object construction work?",sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+"When using `lambda_stmt(lambda: future_select(Customer))`, is it valid to vary the entity or column on each invocation while still keeping the cached plan?",sqlalchemy-v1.4-migration_14-3886,sqlalchemy
+"After upgrading, why does iterating a connection from the pool no longer skip rows when using the underlying cursor object?",sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+I’m seeing Integer and SmallInteger comparisons treated as compatible now; is this the new type affinity behavior for SQLAlchemy types like Text/String and PickleType/Binary?,sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+"Why did aliasing an alias() stop failing to clone/adapt in ORM queries, and what changed in the adaptation path?",sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+"Does MetaData.reflect() still pick up Oracle index overflow tables, or are those now intentionally omitted from table_names()?",sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+"In a sharding setup, should I replace column equality checks with col1.shares_lineage(col2) after the sharding example fix?",sqlalchemy-v2.0-changelog_05-6137,sqlalchemy
+"In a Table column, can I pass String without parentheses, or do I need String() when using Column(""user_name"", String, primary_key=True)?",sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+What does SQLAlchemy mean by CamelCase vs UPPERCASE type names in sqlalchemy.types?,sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+Why does Boolean compile to BOOLEAN on PostgreSQL but BIT on MySQL and SMALLINT on Oracle?,sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+Is it valid to use Integer or DateTime directly in a Column definition without instantiating the type?,sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+"For backend portability, should I prefer String and Numeric over database-specific types in my metadata?",sqlalchemy-v1.4-type_basics-2960,sqlalchemy
+"After upgrading, why did my InnoDB table stop getting the auto-generated `KEY idx_autoinc_y (y)` for a composite `AUTO_INCREMENT` primary key?",sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+How should I define a composite primary key on MySQL if I need the `AUTO_INCREMENT` column to be first in the `PRIMARY KEY` order?,sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+"Do I still need `autoincrement=False` on the non-autoincrement columns in a composite `Column(..., primary_key=True)` setup?",sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+What’s the recommended way to keep explicit primary key ordering on MySQL when using `PrimaryKeyConstraint` with an autoincrement column?,sqlalchemy-v2.0-migration_11-5820,sqlalchemy
+"Why is SQLAlchemy no longer rewriting right-nested joins into subqueries for SQLite 3.7.16+, and can this behavior be disabled?",sqlalchemy-v2.0-migration_11-5820,sqlalchemy

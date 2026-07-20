@@ -5,85 +5,84 @@ from sentence_transformers import SentenceTransformer
 from src.config import CHUNKS_PATH, EMBEDDINGS_PATH, EMBEDDING_MODEL_NAME
 
 class VectorSearcher:
+	_model = None
+	_chunks = None
+	_vectors = None
+        
+	def __init__(self):
 
-    _model = None
-    _chunks = None
-    _vectors = None
+		if VectorSearcher._chunks is None:
+			with open(CHUNKS_PATH, "r", encoding="utf-8") as f:
+				VectorSearcher._chunks = json.load(f)
 
-    def __init__(self):
+		if VectorSearcher._vectors is None:
+			VectorSearcher._vectors = np.load(EMBEDDINGS_PATH)
 
-        if VectorSearcher._chunks is None:
-            with open(CHUNKS_PATH, "r", encoding="utf-8") as f:
-                VectorSearcher._chunks = json.load(f)
+		if VectorSearcher._model is None:
+			VectorSearcher._model = SentenceTransformer(
+				EMBEDDING_MODEL_NAME
+			)
 
-        if VectorSearcher._vectors is None:
-            VectorSearcher._vectors = np.load(EMBEDDINGS_PATH)
+		self.chunks = VectorSearcher._chunks
+		self.vectors = VectorSearcher._vectors
 
-        if VectorSearcher._model is None:
-            VectorSearcher._model = SentenceTransformer(
-                EMBEDDING_MODEL_NAME
-            )
+	@property
+	def model(self):
+		return VectorSearcher._model
 
-        self.chunks = VectorSearcher._chunks
-        self.vectors = VectorSearcher._vectors
+	def search(
+		self,
+		query: str,
+		library: str = None,
+		limit: int = 5,
+	):
+		if not query.strip():
+			return []
 
-    @property
-    def model(self):
-        return VectorSearcher._model
+		query_vector = self.model.encode(
+		[query],
+		normalize_embeddings=True,
+		)[0]
 
-    def search(
-        self,
-        query: str,
-        library: str = None,
-        limit: int = 5,
-    ):
-        if not query.strip():
-            return []
+		assert self.vectors.shape[1] == query_vector.shape[0], (
+		f"Embedding dimension mismatch. "
+		f"Database has {self.vectors.shape[1]}, "
+		f"query has {query_vector.shape[0]}."
+		)
 
-        query_vector = self.model.encode(
-            [query],
-            normalize_embeddings=True,
-        )[0]
+		scores = self.vectors @ query_vector
 
-        assert self.vectors.shape[1] == query_vector.shape[0], (
-            f"Embedding dimension mismatch. "
-            f"Database has {self.vectors.shape[1]}, "
-            f"query has {query_vector.shape[0]}."
-        )
+		if library:
+			mask = np.array(
+				[
+				chunk["library"] == library
+				for chunk in self.chunks
+				]
+			)
+			scores = np.where(mask, scores, -1.0)
 
-        scores = self.vectors @ query_vector
+		if len(scores) > limit:
+			top_indices = np.argpartition(
+				-scores,
+				limit,
+			)[:limit]
 
-        if library:
-            mask = np.array(
-                [
-                    chunk["library"] == library
-                    for chunk in self.chunks
-                ]
-            )
-            scores = np.where(mask, scores, -1.0)
+			top_indices = top_indices[
+				np.argsort(-scores[top_indices])
+			]
+		else:
+			top_indices = np.argsort(-scores)
 
-        if len(scores) > limit:
-            top_indices = np.argpartition(
-                -scores,
-                limit,
-            )[:limit]
+		results = []
 
-            top_indices = top_indices[
-                np.argsort(-scores[top_indices])
-            ]
-        else:
-            top_indices = np.argsort(-scores)
+		for idx in top_indices:
 
-        results = []
+			if scores[idx] < 0:
+				continue
 
-        for idx in top_indices:
+			chunk = self.chunks[idx].copy()
+			chunk["score"] = float(scores[idx])
 
-            if scores[idx] < 0:
-                continue
+			results.append(chunk)
 
-            chunk = self.chunks[idx].copy()
-            chunk["score"] = float(scores[idx])
-
-            results.append(chunk)
-
-        return results
+		return results

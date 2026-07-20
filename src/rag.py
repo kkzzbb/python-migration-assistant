@@ -53,10 +53,8 @@ class MigrationAssistant:
 
 		response = self.client.responses.create(
             		model="gpt-5.4-mini",
-            		input=[
-               			{"role": "developer", "content": SYSTEM_PROMPT},
-                		{"role": "user", "content": user_prompt}
-            		],
+    			instructions=SYSTEM_PROMPT,
+    			input=user_prompt,
             		temperature=0.0
        		)
 		answer = response.output_text
