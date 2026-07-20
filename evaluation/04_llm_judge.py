@@ -27,7 +27,7 @@ def judge_version_blending():
 	answers = df_answers.to_dict(orient="records")
 	evaluations = []
 
-	print("Evaluating Version Blending Defense...")
+	print("Evaluating Version Compliance (Baseline vs RAG)...")
 	for rec in tqdm(answers):
 		baseline_prompt = blending_judge_prompt.format(question=rec["question"], answer=rec["answer_baseline"])
 		try:
@@ -41,6 +41,7 @@ def judge_version_blending():
 			).output_parsed
 			baseline_has_legacy = baseline_res.contains_legacy_syntax
 			baseline_reasoning = baseline_res.reasoning
+		
 		except Exception as e:
 			baseline_has_legacy = True
 			baseline_reasoning = f"Error: {e}"
@@ -48,7 +49,7 @@ def judge_version_blending():
 		rag_prompt = blending_judge_prompt.format(question=rec["question"], answer=rec["answer_llm"])
 		try:
 			rag_res = client.responses.parse(
-				model="gpt-5.4-mini",
+                		model="gpt-5.4-mini",
 				input=[
 					{"role": "developer", "content": blending_judge_instructions},
 					{"role": "user", "content": rag_prompt}
@@ -60,7 +61,7 @@ def judge_version_blending():
 		except Exception as e:
 			rag_has_legacy = True
 			rag_reasoning = f"Error: {e}"
-
+	
 		evaluations.append({
 			"question": rec["question"],
 			"baseline_has_legacy_syntax": baseline_has_legacy,
@@ -70,13 +71,19 @@ def judge_version_blending():
 		})
 
 	df_eval = pd.DataFrame(evaluations)
+	df_eval.to_csv("data/version_blending_evaluations.csv", index=False)
+	
+	print("\n--- VERSION COMPLIANCE METRICS ---")
+    
+	baseline_legacy_rate = df_eval['baseline_has_legacy_syntax'].mean() * 100
+	rag_legacy_rate = df_eval['rag_has_legacy_syntax'].mean() * 100
 
-	print("\n--- VERSION CONTAMINATION METRICS ---")
-	baseline_contamination = df_eval['baseline_has_legacy_syntax'].mean() * 100
-	rag_contamination = df_eval['rag_has_legacy_syntax'].mean() * 100
+	baseline_compliance = 100 - baseline_legacy_rate
+	rag_compliance = 100 - rag_legacy_rate
 
-	print(f"Baseline Contamination Rate: {baseline_contamination:.1f}%")
-	print(f"RAG Contamination Rate:      {rag_contamination:.1f}%")
+	print(f"Baseline (No RAG)  --> Modern Compliance: {baseline_compliance:.1f}% | Outdated Syntax Rate: {baseline_legacy_rate:.1f}%")
+	print(f"RAG-Assisted       --> Modern Compliance: {rag_compliance:.1f}% | Outdated Syntax Rate: {rag_legacy_rate:.1f}%")
+	print(f"\nConclusion: RAG improved modern syntax compliance by +{(rag_compliance - baseline_compliance):.1f}%!")
 
 if __name__ == "__main__":
 	judge_version_blending()

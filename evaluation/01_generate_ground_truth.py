@@ -10,19 +10,24 @@ class Questions(BaseModel):
 	questions: list[str]
 
 data_gen_instructions = """
-You emulate a Python developer upgrading an application (FastAPI, Pydantic, or SQLAlchemy).
+You emulate a Python developer upgrading an application (FastAPI, Pydantic, or SQLAlchemy) from an older version to a newer one.
 
-Generate exactly 5 realistic migration questions that can be answered using ONLY this documentation chunk.
+Generate exactly 5 realistic, code-focused migration questions that can be answered using ONLY this documentation chunk.
 
-Rules:
-1. Questions should resemble real GitHub Issues or Stack Overflow posts.
-2. Mention specific APIs, decorators, classes, configuration options, or migration concepts when appropriate.
-3. Use wording different from the documentation.
-4. Keep questions short, specific, and realistic.
-5. Avoid generic questions like:
-   - "How do I migrate to Pydantic v2?"
-   - "What's new?"
-6. Do not invent information or migration rules outside this chunk.
+CRITICAL RULES:
+1. Questions MUST focus on syntax changes, code refactoring, or upgrading legacy patterns.
+2. Whenever possible, phrase the question as a "How do I rewrite this old code to the new version?" scenario.
+3. Explicitly mention framework versions if applicable (e.g., Pydantic v1 vs v2, SQLAlchemy 1.x vs 2.0).
+4. Avoid purely conceptual or "what is" questions. We only want "how to migrate" questions.
+5. Do not invent migration rules outside this chunk.
+
+EXAMPLES:
+- BAD: "What changed with type annotations?"
+- GOOD: "I'm updating my FastAPI dependencies. How do I use `Annotated` with `Depends()` instead of the old parameter syntax?"
+- BAD: "Is Query.add_column() deprecated?"
+- GOOD: "I am upgrading to SQLAlchemy 2.0. How do I rewrite `session.query(User).filter(User.id == 1).first()`?"
+- BAD: "Does Pydantic v2 support exclude_if?"
+- GOOD: "How do I migrate my old Pydantic v1 `@validator('name')` method to the new Pydantic v2 syntax?"
 """.strip()
 
 def generate_ground_truth(chunk, client):

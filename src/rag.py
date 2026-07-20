@@ -1,6 +1,8 @@
+import time
 from openai import OpenAI
 from dotenv import load_dotenv
 from src.hybrid_search import HybridSearcher
+from src.monitoring import save_conversation
 
 load_dotenv()
 
@@ -20,18 +22,29 @@ RULES:
 
 MAX_CONTEXT_CHARS = 12000
 
+def calculate_cost(usage):
+	if usage:
+		input_cost = (usage.prompt_tokens / 1_000_000) * 0.15
+		output_cost = (usage.completion_tokens / 1_000_000) * 0.60
+		return input_cost + output_cost
+	return 0.0
+
 class MigrationAssistant:
 	def __init__(self):
 		self.searcher = HybridSearcher()
 		self.client = OpenAI()
 
 	def answer_question(self, question: str, user_code: str = "", library: str = None):
+		start_time = time.time()
 		retrieved_chunks = self.searcher.search(question, library=library, limit=5)
 		if not retrieved_chunks:
 			return {
                 		"answer": "I couldn't find any relevant migration guide for this specific question.",
                 		"sources": [],
-                		"retrieved": 0
+                		"retrieved": 0,
+				"conversation_id": None,
+                		"response_time": 0.0,
+                		"cost": 0.0
             		}
 		
 		context_text = ""
@@ -51,13 +64,19 @@ class MigrationAssistant:
 			user_prompt += f"## User Code\n{user_code}\n\n"
 		user_prompt += f"## User Question\n{question}"
 
+		messages = [
+			{"role": "developer", "content": SYSTEM_PROMPT},
+			{"role": "user", "content": user_prompt}
+		]
+
 		response = self.client.responses.create(
             		model="gpt-5.4-mini",
-    			instructions=SYSTEM_PROMPT,
-    			input=user_prompt,
-            		temperature=0.0
+            		input=messages
        		)
+		response_time = time.time() - start_time
 		answer = response.output_text
+		usage = response.usage
+		cost = calculate_cost(usage)
 		sources = [
          		{
                 		"library": c["library"],
@@ -67,8 +86,22 @@ class MigrationAssistant:
             		}
            		for c in retrieved_chunks
         	]
+		conversation_id = save_conversation(
+			question=question,
+			answer=answer,
+			library=str(library),
+			model=self.model,
+			usage=usage,
+			response_time=response_time,
+			cost=cost
+		)
+
 		return {
 			"answer": answer,
             		"sources": sources,
-            		"retrieved": len(retrieved_chunks)
+            		"retrieved": len(retrieved_chunks),
+			"conversation_id": conversation_id,
+			"response_time": response_time,
+			"cost": cost,
+			"usage": usage
 		}

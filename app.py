@@ -1,6 +1,9 @@
 import time
 import streamlit as st
 from src.rag import MigrationAssistant
+from src.monitoring import init_monitoring_db, save_feedback
+
+init_monitoring_db()
 
 st.set_page_config(
 	page_title="Python Migration Assistant",
@@ -47,7 +50,6 @@ if generate:
 	if not question.strip():
 		st.warning("Please enter a question first!")
 	else:
-		start_time = time.time()
 		with st.spinner("Searching official docs and generating response..."):
 			try:
 				result = assistant.answer_question(
@@ -55,7 +57,6 @@ if generate:
 					user_code=user_code,
 					library=library_filter
 				)
-				elapsed = time.time() - start_time
 				st.divider()
 				if result["retrieved"] == 0:
 					st.warning("No relevant migration guide was found.")
@@ -63,10 +64,26 @@ if generate:
 				else:
 					st.markdown("### Answer")
 					st.markdown(result["answer"])
-					st.caption(f"Completed in {elapsed:.2f} seconds")
+					st.caption(f"⏱️ Time: {result['response_time']:.2f}s | 💰 Cost: ${result['cost']:.6f} | 🔤 Tokens: {result['usage'].total_tokens if result['usage'] else 0}")
+					st.session_state.conversation_id = result["conversation_id"]
+					
 					with st.expander(f"Retrived {result['retrieved']} documentation chunks"):
 						for idx, source in enumerate(result["sources"], start=1):
 							lib_name = source['library'].title()
 							st.markdown(f"**{idx}. {lib_name} {source['version']}** — *{source['heading']}*  \n`{source['filename']}`")
 			except Exception as e:
 					st.error(f"An error occurred while connecting to the OpenAI API: {str(e)}")
+				
+	if "conversation_id" in st.session_state and st.session_state.conversation_id:
+		st.write("---")
+		st.write("Was this migration guide helpful?")
+		f_col1, f_col2, _ = st.columns([1, 1, 8])
+    
+		with f_col1:
+			if st.button("👍 +1"):
+				save_feedback(st.session_state.conversation_id, score=1)
+				st.success("Thanks for the feedback!")
+		with f_col2:
+			if st.button("👎 -1"):
+				save_feedback(st.session_state.conversation_id, score=-1)
+				st.warning("Thanks, feedback recorded.")
