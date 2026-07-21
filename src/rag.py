@@ -3,6 +3,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from src.hybrid_search import HybridSearcher
 from src.monitoring import save_conversation
+from src.config import LLM_MODEL_NAME
 
 load_dotenv()
 
@@ -17,15 +18,15 @@ RULES:
 5. If code is supplied, only modify code supported by the retrieved documentation.
 6. Do not invent migration rules.
 7. If multiple documentation chunks discuss the same topic, combine them into one answer.
-8. When explaining migration, show before/after code whenever possible.
+8. When explaining migration, ONLY show the final, modernized code. Do NOT output legacy or deprecated code snippets.
 """
 
 MAX_CONTEXT_CHARS = 12000
 
 def calculate_cost(usage):
 	if usage:
-		input_cost = (usage.prompt_tokens / 1_000_000) * 0.15
-		output_cost = (usage.completion_tokens / 1_000_000) * 0.60
+		input_cost = (usage.input_tokens / 1_000_000) * 0.15
+		output_cost = (usage.output_tokens / 1_000_000) * 0.60
 		return input_cost + output_cost
 	return 0.0
 
@@ -33,6 +34,7 @@ class MigrationAssistant:
 	def __init__(self):
 		self.searcher = HybridSearcher()
 		self.client = OpenAI()
+		self.model = LLM_MODEL_NAME
 
 	def answer_question(self, question: str, user_code: str = "", library: str = None):
 		start_time = time.time()
@@ -70,7 +72,7 @@ class MigrationAssistant:
 		]
 
 		response = self.client.responses.create(
-            		model="gpt-5.4-mini",
+            		model=self.model,
             		input=messages
        		)
 		response_time = time.time() - start_time

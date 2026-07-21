@@ -16,3 +16,5 @@ EVAL_DIR = DATA_DIR / "evaluation"
 GROUND_TRUTH_PATH = EVAL_DIR / "ground_truth.csv"
 RAG_ANSWERS_PATH = EVAL_DIR / "rag_answers.csv"
 RAG_EVALUATIONS_PATH = EVAL_DIR / "rag_evaluations.csv"
+
+LLM_MODEL_NAME = "gpt-5.4-mini"

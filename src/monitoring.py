@@ -49,6 +49,7 @@ def init_monitoring_db():
 	conn.close()
 
 def save_conversation(question: str, answer: str, library: str, model: str, usage, response_time: float, cost: float) -> int:
+	init_monitoring_db()
 	conn = get_db_connection()
 	cursor = conn.cursor()
 	cursor.execute("""
@@ -57,8 +58,8 @@ def save_conversation(question: str, answer: str, library: str, model: str, usag
 		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 	""", (
 		question, answer, library, model, 
-		usage.prompt_tokens if usage else 0, 
-		usage.completion_tokens if usage else 0, 
+		usage.input_tokens if usage else 0, 
+		usage.output_tokens if usage else 0, 
 		usage.total_tokens if usage else 0, 
 		response_time, cost
 	))
