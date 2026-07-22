@@ -24,11 +24,11 @@ The knowledge base is built from official project documentation and GitHub relea
 ## Quickstart
 
 ```bash
-git clone <your-repo-url> python-migration-assistant
+git clone https://github.com/kkzzbb/python-migration-assistant.git
 cd python-migration-assistant
 cp .env.example .env   # add OPENAI_API_KEY (and optionally GITHUB_TOKEN)
 
-docker compose up --build
+docker compose up --build -d
 ```
 
 Then open:
@@ -37,7 +37,7 @@ Then open:
 
 The first run needs the knowledge base to exist. If `data/processed/chunks.json` isn't already present, build it first — see [docs/setup.md](docs/setup.md#building-the-knowledge-base) for the one-command ingestion pipeline.
 
-## Where this maps to the grading rubric
+## Where this maps to the Evaluation Criteria
 
 | Criterion | What satisfies it |
 |---|---|
@@ -47,22 +47,24 @@ The first run needs the knowledge base to exist. If `data/processed/chunks.json`
 | LLM evaluation | Multiple approaches evaluated (RAG vs. no-context baseline) via an LLM-judge metric — `evaluation/03_evaluate_rag.py`, `evaluation/04_llm_judge.py` |
 | Interface | Streamlit web UI — `app.py` |
 | Ingestion pipeline | Automated with a single script, `scripts/build_dataset.py` (chains docs download → release notes → chunk → embed → index). No dedicated orchestrator (Airflow/Prefect/Kestra) is used yet — see [Possible improvements](#possible-improvements) |
-| Monitoring | Feedback (👍/👎) is collected **and** there's a dashboard (`dashboard.py`) with KPI cards and time-series charts. Currently 2 charts + 4 metric cards; see [Possible improvements](#possible-improvements) for getting to 5+ charts |
-| Containerization | Full `docker-compose.yml` covering both services (assistant + dashboard) |
-| Reproducibility | Pinned dependencies via `uv.lock`; dataset is deterministically rebuildable from pinned GitHub branches/tags + the Releases API; `data/evaluation/*.csv` is committed so reviewers can inspect ground truth, RAG-vs-baseline answers, and judge verdicts without spending API budget — see [docs/setup.md](docs/setup.md) |
-| Best practice: hybrid search | Implemented and evaluated — `src/hybrid_search.py`, `evaluation/02_evaluate_search.py` |
+| Monitoring | Streamlit telemetry dashboard (`dashboard.py`) with **4 KPI cards** (total conversations, average response time, total cost, average tokens), **5 visualizations** (cost over time, response time over time, per-library usage, token usage distribution, feedback score distribution), plus recent conversation logs |
+| Containerization | Full `docker-compose.yml` covering both the assistant application and the monitoring dashboard |
+| Reproducibility | Dependencies are pinned with `uv.lock`; the dataset can be deterministically rebuilt from pinned GitHub branches/tags and the GitHub Releases API. Evaluation datasets (`data/evaluation/*.csv`) are committed so reviewers can inspect retrieval ground truth, RAG-vs-baseline outputs, and LLM-judge results without incurring API costs — see [docs/setup.md](docs/setup.md) |
+| Best practice: hybrid search | Implemented and experimentally evaluated — `src/hybrid_search.py`, `evaluation/02_evaluate_search.py` |
 | Best practice: re-ranking | Not implemented |
 | Best practice: query rewriting | Not implemented |
-| Bonus: cloud deployment | Not implemented (local Docker Compose only) |
+| Bonus: cloud deployment | Not implemented (runs locally via Docker Compose) |
 
 ## Possible improvements
 
-- Swap the plain-script pipeline in `scripts/build_dataset.py` for an orchestrator (Airflow, Prefect, or Kestra) for scheduled/incremental re-ingestion.
-- Add more charts to `dashboard.py` — e.g. conversations per library, feedback score distribution, retrieval hit-rate over time, token cost breakdown by model — to round out the monitoring story.
-- Add a cross-encoder re-ranking step after hybrid retrieval.
-- Add query rewriting/expansion ahead of retrieval (useful for short or ambiguous questions).
-- Deploy to a cloud target (e.g. a managed container service) instead of local Docker Compose only.
+- Replace the script-based ingestion pipeline (`scripts/build_dataset.py`) with a workflow orchestrator such as Airflow, Prefect, or Kestra to support scheduled and incremental indexing.
+- Add retrieval re-ranking (e.g., cross-encoder or reranker model) to improve document relevance.
+- Implement query rewriting or query expansion to better handle ambiguous user questions.
+- Extend monitoring with additional operational metrics such as cache hit rate, retrieval latency, embedding latency, and per-model cost breakdown.
+- Deploy the application to a managed cloud platform instead of running only through local Docker Compose.
 
 ## License
 
-Add your license of choice here.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+

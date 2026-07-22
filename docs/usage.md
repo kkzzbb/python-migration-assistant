@@ -6,7 +6,7 @@ Once running, `http://localhost:8501` shows:
 
 1. **Target Library** — a sidebar filter (`All`, `fastapi`, `pydantic`, `sqlalchemy`). Restricting to one library narrows retrieval to that library's chunks only, which helps when the same term means different things across frameworks.
 2. **Question** — describe what you're migrating, ideally mentioning the versions involved, e.g.:
-   > I'm migrating a FastAPI project from 0.95 to 0.115. Why is `Depends()` no longer working inside my `Annotated` types?
+   > I'm migrating my data models from Pydantic v1 to v2. How do I rewrite my old @validator methods to the new Pydantic v2 syntax?
 3. **Paste your old code (optional)** — paste the legacy snippet you want rewritten. It's passed to the LLM alongside the retrieved documentation, so the answer can reference your actual code rather than a generic example.
 4. **Generate Guide** — runs hybrid retrieval (top 5 chunks) and sends the question, retrieved docs, and your code to the LLM.
 
@@ -39,4 +39,4 @@ This is populated automatically as people use the assistant — there's no separ
 
 ## Recording a demo
 
-If you want to attach a short walkthrough video to your README: Streamlit has a built-in screen recorder in the app's top-right menu (Settings → Record a screencast). Record a short pass through the example walkthrough above, then drag the resulting file into the GitHub web editor for your README to embed it.
+
