@@ -2,34 +2,6 @@
 
 ## How it works
 
-```mermaid
-flowchart LR
-    subgraph Ingestion
-        A["GitHub repos\n(pydantic / sqlalchemy / fastapi)"] -->|sparse checkout of docs folders, pinned branches| B[("data/raw/*.md, *.rst")]
-        A2["GitHub Releases API"] --> B
-    end
-    subgraph Processing
-        B --> C["chunker.py\nclean noise, split by heading,\nsliding-window chunk with overlap"]
-        C --> D[("chunks.json")]
-        D --> E["embedding.py\nall-MiniLM-L6-v2"]
-        E --> F[("embeddings.npy")]
-        D --> G["keyword_search.py\nSQLite FTS5 + BM25"]
-        G --> H[("keyword.db")]
-    end
-    subgraph "Retrieval & Answering"
-        F --> I["hybrid_search.py\nReciprocal Rank Fusion"]
-        H --> I
-        I --> J["rag.py\nMigrationAssistant"]
-        J --> K["LLM (gpt-5.4-mini)"]
-        K --> L["Answer + cited sources"]
-    end
-    subgraph "Interface & Monitoring"
-        L --> M["app.py\nStreamlit chat UI"]
-        M --> N[("monitoring.db\nconversations + feedback")]
-        N --> O["dashboard.py\ntelemetry dashboard"]
-    end
-```
-
 1. **Ingest** — `scripts/download_docs.py` sparse-clones the docs folder of pinned branches/tags for each library and version; `scripts/fetch_github_data.py` pulls recent GitHub release notes for each repo.
 2. **Chunk** — `src/chunker.py` strips bot/CI noise (Dependabot bumps, "merge pull request", etc.) and HTML, splits each file on `#`/`##`/`###` headings, then further splits long sections into ~450-word chunks with an 80-word overlap so context isn't cut mid-explanation.
 3. **Index** — `src/embedding.py` embeds every chunk with `sentence-transformers/all-MiniLM-L6-v2` (normalized, for cosine similarity); `src/keyword_search.py` builds a SQLite FTS5 table with BM25 ranking.
@@ -88,6 +60,6 @@ flowchart LR
 | Retrieval fusion | Reciprocal Rank Fusion (RRF) |
 | Interface | Streamlit (`app.py`) |
 | Monitoring | SQLite + a second Streamlit app (`dashboard.py`) |
-| Ingestion | Plain Python scripts orchestrated by `scripts/build_dataset.py` |
+| Ingestion | Python scripts orchestrated by `scripts/build_dataset.py` |
 | Packaging | `uv` + `pyproject.toml` / `uv.lock` |
 | Containerization | Docker + Docker Compose (two services) |

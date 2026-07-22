@@ -2,12 +2,11 @@
 
 ## Prerequisites
 
-- Python 3.10 (matches the `Dockerfile` base image)
+- Python 3.12 (matches the `Dockerfile` base image)
 - [`uv`](https://github.com/astral-sh/uv) for dependency management
 - `git` (the ingestion pipeline clones docs directly from GitHub)
 - Docker + Docker Compose, if you'd rather not install anything locally
 - An OpenAI API key
-- (Optional) A GitHub personal access token, to avoid the GitHub API's low unauthenticated rate limit when fetching release notes
 
 ## Environment variables
 
@@ -31,8 +30,6 @@ cp .env.example .env
 ```
 
 `OPENAI_API_KEY` is required — `src/rag.py` and every script under `evaluation/` instantiate `OpenAI()`, which reads it from the environment (loaded via `load_dotenv()`).
-
-If you also want to regenerate the release-notes data yourself (`scripts/fetch_github_data.py`), you can optionally add a `GITHUB_TOKEN` to your `.env` to raise the GitHub API's rate limit. It's not in `.env.example` because it isn't required — the script works fine without it, just subject to GitHub's (generous) unauthenticated rate limits.
 
 ## Option A — run locally with `uv`
 

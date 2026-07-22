@@ -37,16 +37,7 @@ This script only prints to stdout — its results aren't saved to a CSV, so unli
 python evaluation/02_evaluate_search.py
 ```
 
-Paste your own run's numbers into a table here for the record, e.g.:
-
-| Strategy | Hit Rate@5 | MRR@5 |
-|---|---|---|
-| Keyword only (BM25) | _fill in_ | _fill in_ |
-| Vector only | _fill in_ | _fill in_ |
-| Hybrid (1:1) | _fill in_ | _fill in_ |
-| Hybrid (2:1) | _fill in_ | _fill in_ |
-| Hybrid (5:1) | _fill in_ | _fill in_ |
-| Hybrid (10:1) | _fill in_ | _fill in_ |
+![alt text](image.png)
 
 ## 3. RAG vs. baseline answers — `evaluation/03_evaluate_rag.py`
 
@@ -71,9 +62,5 @@ compliance % = 100 - (% of answers flagged as containing legacy syntax)
 
 `python evaluation/04_llm_judge.py` writes `data/evaluation/version_blending_evaluations.csv` — **committed to the repo** — with per-question reasoning and verdicts for both the baseline and RAG answers, plus a printed summary table of the aggregate compliance rates:
 
-| | Modern-syntax compliance | Outdated-syntax rate |
-|---|---|---|
-| Baseline (no RAG) | see `version_blending_evaluations.csv` | |
-| RAG-assisted | see `version_blending_evaluations.csv` | |
+![alt text](image.png)
 
-This is the headline number for the project: it directly measures whether retrieval-augmentation reduces the "confidently recommends deprecated code" failure mode the assistant was built to fix. If you'd rather have the aggregate percentages inline here instead of pointing at the CSV, compute them once from your run and replace this table with the actual numbers.
