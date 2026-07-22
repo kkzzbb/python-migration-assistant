@@ -64,3 +64,12 @@ compliance % = 100 - (% of answers flagged as containing legacy syntax)
 
 ![eval_04](images/eval_04.png)
 
+### Discussion
+
+Interestingly, the baseline slightly outperformed the RAG pipeline on this metric (modern-syntax compliance), achieving approximately **1.2% higher compliance**.
+
+This evaluation measures only whether the recommended solution contains legacy syntax. It does **not** measure answer completeness, factual grounding, or whether the response is supported by the project's documentation.
+
+The RAG system intentionally grounds its answers in the indexed migration guides and release documentation. As a result, it may occasionally reproduce examples containing historical or transitional syntax when those examples are present in the source material. Meanwhile, the baseline LLM relies solely on its pretrained knowledge, which can sometimes produce slightly more modern-looking code despite lacking supporting references.
+
+This result highlights that a single evaluation metric is insufficient to judge overall RAG quality. In practice, retrieval-augmented systems are primarily intended to improve factual grounding and traceability rather than simply maximize modern-syntax compliance.

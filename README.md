@@ -10,7 +10,7 @@ Framework upgrades like Pydantic v1 → v2, SQLAlchemy 1.x → 2.0, and the vari
 
 **Python Migration Assistant** answers migration questions by retrieving the *actual, version-specific* documentation and release notes for the library in question, and instructs the LLM to only use modernized syntax supported by that retrieved context — optionally rewriting a pasted code snippet directly. Every claim is traceable back to a specific library, version, and doc section.
 
-The knowledge base is built from official project documentation and GitHub release notes for FastAPI, Pydantic, and SQLAlchemy — not the Zoomcamp FAQ dataset.
+The knowledge base is built from official project documentation and GitHub release notes for FastAPI, Pydantic, and SQLAlchemy.
 
 ## Docs
 
@@ -49,7 +49,7 @@ The first run needs the knowledge base to exist. If `data/processed/chunks.json`
 | Ingestion pipeline | Automated with a single script, `scripts/build_dataset.py` (chains docs download → release notes → chunk → embed → index). No dedicated orchestrator (Airflow/Prefect/Kestra) is used yet — see [Possible improvements](#possible-improvements) |
 | Monitoring | Streamlit telemetry dashboard (`dashboard.py`) with **4 KPI cards** (total conversations, average response time, total cost, average tokens), **5 visualizations** (cost over time, response time over time, per-library usage, token usage distribution, feedback score distribution), plus recent conversation logs |
 | Containerization | Full `docker-compose.yml` covering both the assistant application and the monitoring dashboard |
-| Reproducibility | Dependencies are pinned with `uv.lock`; the dataset can be deterministically rebuilt from pinned GitHub branches/tags and the GitHub Releases API. Evaluation datasets (`data/evaluation/*.csv`) are committed so reviewers can inspect retrieval ground truth, RAG-vs-baseline outputs, and LLM-judge results without incurring API costs — see [docs/setup.md](docs/setup.md) |
+| Reproducibility | Dependencies are pinned via `uv.lock`. The knowledge base can be reproducibly rebuilt using `scripts/build_dataset.py` from pinned documentation versions, and the evaluation outputs (`data/evaluation/*.csv`) are committed so reviewers can inspect the results without rerunning the evaluation or incurring API costs. See [docs/setup.md](docs/setup.md). |
 | Best practice: hybrid search | Implemented and experimentally evaluated — `src/hybrid_search.py`, `evaluation/02_evaluate_search.py` |
 | Best practice: re-ranking | Not implemented |
 | Best practice: query rewriting | Not implemented |
