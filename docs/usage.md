@@ -31,11 +31,11 @@ If no relevant chunks are retrieved, the app tells you rather than letting the L
 
 `http://localhost:8502` reads from the same monitoring database and shows:
 
-- Total conversations, average response time, total cost, and average tokens per conversation (top-row metric cards)
-- Cost over time and response time over time (line charts)
-- The 10 most recent conversations, with question preview, response time, cost, and library
+- **Top-level metrics:** total conversations, average response time, total cost, and average tokens per conversation
+- **Usage charts:** cost over time, response time over time, per-library request volume, token usage distribution, and feedback score distribution
+- **Recent activity:** the 10 most recent conversations, including a question preview, response time, cost, and the library selected for retrieval
 
-This is populated automatically as people use the assistant — there's no separate step to run; every question asked in `app.py` writes a row to `data/processed/monitoring.db`, and every 👍/👎 writes a linked feedback row.
+The dashboard is populated automatically as people use the assistant—there's no separate ingestion step. Every question asked through `app.py` writes a conversation record to `data/processed/monitoring.db`, and every 👍/👎 feedback submission is stored as a linked feedback record, which is reflected in the dashboard.
 
 ## Recording a demo
 

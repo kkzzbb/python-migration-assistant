@@ -2,15 +2,15 @@
 
 Both halves of the pipeline — retrieval, and the final LLM answer — are evaluated with more than one approach, against the same LLM-generated ground truth set.
 
-**The outputs are committed to the repo** — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_blending_evaluations.csv` are all checked in, so you can inspect the actual questions, answers, and judgments directly without running anything or spending API budget. The sections below describe what each script does and which committed file to open for its output; see [setup.md](setup.md#running-the-evaluation-suite) if you want to regenerate them yourself instead.
+**The outputs are committed to the repo** — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_compliance_evaluations` are all checked in, so you can inspect the actual questions, answers, and judgments directly without running anything or spending API budget. The sections below describe what each script does and which committed file to open for its output; see [setup.md](setup.md#running-the-evaluation-suite) if you want to regenerate them yourself instead.
 
 ## 1. Ground truth generation — `evaluation/01_generate_ground_truth.py`
 
 Since there's no pre-existing Q&A dataset for "migrating FastAPI/Pydantic/SQLAlchemy code," ground truth is generated with an LLM:
 
 - A stratified sample of chunks is drawn from the knowledge base: 17 FastAPI, 17 Pydantic, and 16 SQLAlchemy chunks (50 total), restricted to chunks with more than 40 words so there's enough substance to write a question from.
-- For each sampled chunk, `gpt-5.4-mini` is prompted (with structured output, a `Questions` Pydantic model) to generate **5 realistic migration questions** answerable *only* from that chunk — explicitly "how do I rewrite this old code" style questions rather than conceptual "what changed" questions, per the few-shot examples in the prompt.
-- Output: `data/evaluation/ground_truth.csv` with `question`, `document` (the source chunk id), and `library` columns — up to 250 question/answer-source pairs. **Committed to the repo** — open it directly to see the actual generated questions.
+- For each sampled chunk, `gpt-5.4-mini` is prompted (using structured output with a `Questions` Pydantic model) to generate **5 realistic migration questions** answerable *only* from that chunk. Questions describe upgrading existing code from an older framework version to a newer major version, emphasize "how do I rewrite this old code?" scenarios, explicitly mention framework versions where applicable, and focus on migration patterns that are easy to confuse or accidentally mix.
+- Output: `data/evaluation/ground_truth.csv` with `question`, `document` (the source chunk id), and `library` columns — up to 250 question/source pairs. **Committed to the repo** — open it directly to inspect the generated migration questions.
 
 ## 2. Retrieval evaluation — `evaluation/02_evaluate_search.py`
 
@@ -48,19 +48,26 @@ For every ground-truth question, two answers are generated in parallel (10 worke
 
 The run is resumable: it loads any existing `data/evaluation/rag_answers.csv`, skips questions already answered, and only processes what's left — so a failed or interrupted run doesn't cost you a full re-run of the API calls. Output columns: `question`, `answer_llm` (RAG), `answer_baseline`, `answer_orig` (the source chunk's raw text, for reference), `document`. **Committed to the repo** — open `rag_answers.csv` directly to compare RAG vs. baseline answers side by side for every ground-truth question.
 
-## 4. LLM-as-judge: modern-syntax compliance — `evaluation/04_llm_judge.py`
+## 4. LLM-as-judge: version compliance — `evaluation/04_llm_judge.py`
 
-Domain-specific eval metric: does the **recommended** solution in an answer still rely on legacy/deprecated syntax (e.g. Pydantic v1 `@validator`, SQLAlchemy 1.x `session.query()`)?
+Domain-specific evaluation measures whether the **recommended** migration solution consistently follows the requested target framework version.
 
-Both the RAG answer and the baseline answer for every question are independently judged by `gpt-5.4-mini` with structured output (`BlendingEvaluation`: a `reasoning` string plus a `contains_legacy_syntax` boolean). The judge prompt explicitly allows "Before/After" comparisons — legacy syntax shown as the *old* version is fine; it's only flagged if the actual recommended answer is the outdated one.
+Both the RAG answer and the baseline answer for every question are independently judged by `gpt-5.4-mini` using structured output (`VersionComplianceEvaluation`), which produces a `reasoning` string and two boolean fields:
 
-This gives a **modern-syntax compliance rate** for baseline vs. RAG-assisted answers:
+- `contains_legacy_syntax` — whether the recommended solution relies on deprecated APIs for the target version (e.g. recommending Pydantic v1 `@validator` or SQLAlchemy 1.x `session.query()` for a migration to newer major versions).
+- `contains_version_blending` — whether the recommended solution mixes APIs from different major framework versions within the same migration (e.g. combining Pydantic v1 and v2 syntax in the final solution).
+
+The judge prompt explicitly allows "Before/After" comparisons. Legacy syntax shown only as historical context is ignored; only the final recommended solution is evaluated.
+
+This produces two aggregate metrics for baseline vs. RAG-assisted answers:
 
 ```
-compliance % = 100 - (% of answers flagged as containing legacy syntax)
+Outdated Syntax Rate = % of answers flagged with contains_legacy_syntax
+
+Version Blending Rate = % of answers flagged with contains_version_blending
 ```
 
-`python evaluation/04_llm_judge.py` writes `data/evaluation/version_blending_evaluations.csv` — **committed to the repo** — with per-question reasoning and verdicts for both the baseline and RAG answers, plus a printed summary table of the aggregate compliance rates:
+`python evaluation/04_llm_judge.py` writes `data/evaluation/version_compliance_evaluations.csv` — **committed to the repo** — containing the judge's reasoning and both version-compliance verdicts for every baseline and RAG answer, along with a printed summary comparing the aggregate rates.
 
 ![eval_04](images/eval_04.png)
 

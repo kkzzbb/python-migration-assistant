@@ -15,11 +15,12 @@ You emulate a Python developer upgrading an application (FastAPI, Pydantic, or S
 Generate exactly 5 realistic, code-focused migration questions that can be answered using ONLY this documentation chunk.
 
 CRITICAL RULES:
-1. Questions MUST focus on syntax changes, code refactoring, or upgrading legacy patterns.
+1. Questions MUST describe upgrading existing code from a specific older framework version to a newer major version.
 2. Whenever possible, phrase the question as a "How do I rewrite this old code to the new version?" scenario.
 3. Explicitly mention framework versions if applicable (e.g., Pydantic v1 vs v2, SQLAlchemy 1.x vs 2.0).
 4. Avoid purely conceptual or "what is" questions. We only want "how to migrate" questions.
 5. Do not invent migration rules outside this chunk.
+6. Prefer migration scenarios where old and new APIs are easy to confuse or accidentally mix together.
 
 EXAMPLES:
 - BAD: "What changed with type annotations?"
