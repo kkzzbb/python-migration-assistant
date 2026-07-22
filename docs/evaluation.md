@@ -37,7 +37,7 @@ This script only prints to stdout — its results aren't saved to a CSV, so unli
 python evaluation/02_evaluate_search.py
 ```
 
-![alt text](image.png)
+![eval_02](eval_02.png)
 
 ## 3. RAG vs. baseline answers — `evaluation/03_evaluate_rag.py`
 
@@ -62,5 +62,5 @@ compliance % = 100 - (% of answers flagged as containing legacy syntax)
 
 `python evaluation/04_llm_judge.py` writes `data/evaluation/version_blending_evaluations.csv` — **committed to the repo** — with per-question reasoning and verdicts for both the baseline and RAG answers, plus a printed summary table of the aggregate compliance rates:
 
-![alt text](image.png)
+![eval_04](eval_04.png)
 
