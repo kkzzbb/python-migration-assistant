@@ -35,7 +35,7 @@ Then open:
 - `http://localhost:8501` — the assistant
 - `http://localhost:8502` — the telemetry dashboard
 
-The first run needs the knowledge base to exist. If `data/processed/chunks.json` isn't already present, build it first — see [docs/setup.md](docs/setup.md#building-the-knowledge-base) for the one-command ingestion pipeline.
+The repository already includes the generated knowledge base and search indexes, so the application is ready to use after starting the containers. If you'd like to regenerate the dataset from the original documentation sources instead, see [docs/setup.md](docs/setup.md#building-the-knowledge-base).
 
 ## Where this maps to the Evaluation Criteria
 

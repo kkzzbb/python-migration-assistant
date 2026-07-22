@@ -10,8 +10,6 @@ RUN uv pip install --system --index-strategy unsafe-best-match --extra-index-url
 
 COPY . .
 
-RUN mkdir -p data/processed
-
 EXPOSE 8501 8502
 
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]

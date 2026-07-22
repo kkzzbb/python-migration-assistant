@@ -69,7 +69,6 @@ if __name__ == "__main__":
 	pydantic_chunks = [c for c in valid_chunks if c["library"] == "pydantic"]
 	sqlalchemy_chunks = [c for c in valid_chunks if c["library"] == "sqlalchemy"]
 	
-
 	sample_chunks = (
 		random.sample(fastapi_chunks, 17)
 		+ random.sample(pydantic_chunks, 17)

@@ -12,8 +12,9 @@ wheels/
 
 # Generated data
 data/raw/
-data/processed/
-data/indexes/
+# data/processed/*
+# data/indexes/
+# !data/processed/chunks.json
 
 # Ignore Mac/IDE junk files
 .DS_Store

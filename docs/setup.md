@@ -7,7 +7,7 @@
 - `git` (the ingestion pipeline clones docs directly from GitHub)
 - Docker + Docker Compose, if you'd rather not install anything locally
 - An OpenAI API key
-- (Optional) A GitHub personal access token, to avoid the GitHub API's low unauthenticated rate limit when fetching release notes
+- (Optional) A GitHub personal access token, to avoid the GitHub API's low unauthenticated rate limit when fetching release notes (part of building the dataset)
 
 ## Environment variables
 
@@ -22,6 +22,9 @@ A template is committed at the project root as `.env.example`:
 # 2. Replace the placeholder below with your actual API key.
 
 OPENAI_API_KEY=your_actual_api_key_goes_here
+
+# Optional (only needed when rebuilding the dataset)
+GITHUB_TOKEN=your_github_personal_access_token
 ```
 
 Copy it and fill in a real key:
@@ -32,15 +35,32 @@ cp .env.example .env
 
 `OPENAI_API_KEY` is required — `src/rag.py` and every script under `evaluation/` instantiate `OpenAI()`, which reads it from the environment (loaded via `load_dotenv()`).
 
-If you also want to regenerate the release-notes data yourself (`scripts/fetch_github_data.py`), you can optionally add a `GITHUB_TOKEN` to your `.env` to raise the GitHub API's rate limit. It's not in `.env.example` because it isn't required — the script works fine without it, just subject to GitHub's (generous) unauthenticated rate limits.
+`GITHUB_TOKEN` is optional. It is only used by `scripts/fetch_github_data.py` when downloading GitHub release notes, allowing higher GitHub API rate limits. The script also works without a token, subject to GitHub's unauthenticated rate limits.
+
+### Obtaining an OpenAI API key
+
+This project uses the OpenAI Responses API.
+
+1. Create or sign in to your OpenAI account.
+2. Visit https://platform.openai.com/api-keys.
+3. Create a new secret API key.
+4. Copy it into your `.env` file:
+
+```.env
+OPENAI_API_KEY=your_api_key_here
+```
+
+> **Note:** OpenAI API access is a paid service. Depending on your account, you may need to add billing information or purchase API credits before requests will succeed. Running the application and the evaluation scripts will consume API tokens and may incur charges. The evaluation scripts `01_generate_ground_truth.py`, `03_evaluate_rag.py`, and `04_llm_judge.py` make OpenAI API calls and therefore consume API tokens. The repository includes the generated evaluation CSV files, so reviewers do not need to rerun them unless they want to regenerate the results.
 
 ## Option A — run locally with `uv`
+
+> **Note:** The repository already includes the generated knowledge base and search indexes, so you can **skip Step 2** if you simply want to run the application. Run it only if you want to regenerate the dataset from the original documentation sources.
 
 ```bash
 # 1. Install dependencies (pinned versions from uv.lock)
 uv sync
 
-# 2. Build the knowledge base (see below)
+# 2. Build the knowledge base (optional)
 uv run python scripts/build_dataset.py
 
 # 3. Run the assistant
@@ -53,7 +73,7 @@ uv run streamlit run dashboard.py --server.port=8502
 ## Option B — run with Docker Compose
 
 ```bash
-docker compose up --build
+docker compose up --build -d
 ```
 
 This builds one image (from the shared `Dockerfile`) and starts two containers from `docker-compose.yml`:
@@ -65,7 +85,11 @@ This builds one image (from the shared `Dockerfile`) and starts two containers f
 
 Both containers mount `./data` as a volume, so the knowledge base, embeddings, and SQLite databases persist on the host and are shared between the two services.
 
-> The knowledge base still needs to be built at least once (see below) — the Dockerfile creates `data/processed/` but does not run the ingestion pipeline automatically. Run it locally with `uv`, or `docker compose run migration-assistant python scripts/build_dataset.py` before starting the app for the first time.
+> **Note:** The repository already includes the generated knowledge base and search indexes, so `docker compose up --build -d` is sufficient to start the application. If you want to verify the ingestion pipeline from scratch, remove the generated data first and run:
+>
+> ```bash
+> docker compose run migration-assistant python scripts/build_dataset.py
+> ```
 
 ## Building the knowledge base
 
@@ -87,7 +111,7 @@ Re-running the whole pipeline is safe — already-downloaded doc versions are sk
 
 ## Running the evaluation suite
 
-**You don't have to run this to review the project.** The generated outputs — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_blending_evaluations.csv` — are committed to the repo, so you can open them directly to see the ground-truth questions, the RAG vs. baseline answers, and the LLM-judge verdicts without spending any API budget.
+**You don't have to run this to review the project.** The generated outputs — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_compliance_evaluations.csv` — are committed to the repo, so you can open them directly to see the ground-truth questions, the RAG vs. baseline answers, and the LLM-judge verdicts without spending any API budget.
 
 If you want to regenerate them yourself, see [evaluation.md](evaluation.md) for what each script does. In short, run them in order once the knowledge base exists:
 
@@ -95,7 +119,17 @@ If you want to regenerate them yourself, see [evaluation.md](evaluation.md) for 
 python evaluation/01_generate_ground_truth.py   # -> data/evaluation/ground_truth.csv
 python evaluation/02_evaluate_search.py          # prints Hit Rate@5 / MRR@5 to stdout, no API calls
 python evaluation/03_evaluate_rag.py              # -> data/evaluation/rag_answers.csv
-python evaluation/04_llm_judge.py                  # -> data/evaluation/version_blending_evaluations.csv
+python evaluation/04_llm_judge.py                  # -> data/evaluation/version_compliance_evaluations.csv
 ```
 
 `01`, `03`, and `04` call the OpenAI API (for ground-truth generation, answer generation, and judging respectively), so re-running them from scratch will incur API costs. `02` is local-only (BM25 + embeddings, no LLM calls) and safe to re-run any time. `03` is resumable — it skips questions already present in `rag_answers.csv`, so deleting just a few rows and re-running only regenerates those. If you delete a committed CSV and re-run its script, you'll overwrite the committed results with your own.
+
+## Stopping the application
+
+If you started the services with Docker Compose, stop and remove the containers with:
+
+```bash
+docker compose down
+```
+
+The generated data and monitoring database are stored in the mounted `data/` directory, so they remain on your machine and are reused the next time you start the application.
