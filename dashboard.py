@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from src.monitoring import get_stats, get_recent_conversations
+from src.monitoring import get_stats, get_recent_conversations, get_db_connection
 
 st.set_page_config(layout="wide", page_title="Telemetry Dashboard")
 st.title("📊 Migration Assistant Telemetry")
@@ -31,6 +31,31 @@ if records:
 		st.subheader("Response time over time")
 		st.line_chart(df, x="timestamp", y="response_time")
         
+	st.write("---")
+	
+	col_chart3, col_chart4, col_chart5 = st.columns(3)
+	
+	with col_chart3:
+		st.subheader("3. Per-Library Volume")
+		if "library" in df.columns:
+			lib_counts = df["library"].value_counts()
+			st.bar_chart(lib_counts)
+	
+	with col_chart4:
+		st.subheader("4. Token Usage Distribution")
+		if "total_tokens" in df.columns:
+			st.scatter_chart(df, x="response_time", y="total_tokens")
+			    
+	with col_chart5:
+		st.subheader("5. Feedback Score Distribution")
+		conn = get_db_connection()
+		feedback_df = pd.read_sql("SELECT score, COUNT(*) as count FROM feedback GROUP BY score", conn)
+		conn.close()
+		if not feedback_df.empty:
+			st.bar_chart(feedback_df, x="score", y="count")
+		else:
+			st.info("No feedback recorded yet.")
+	
 	st.subheader("Recent Conversations")
 	for record in records[:10]:
 		st.markdown(f"**Q:** {record['question'][:100]}...")

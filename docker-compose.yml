@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  migration-assistant:
+    build: .
+    image: python-migration-base
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    command: streamlit run app.py --server.port=8501 --server.address=0.0.0.0
+
+  telemetry-dashboard:
+    image: python-migration-base
+    depends_on:
+      - migration-assistant
+    ports:
+      - "8502:8502"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    command: streamlit run dashboard.py --server.port=8502 --server.address=0.0.0.0
