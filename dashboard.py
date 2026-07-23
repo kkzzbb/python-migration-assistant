@@ -5,9 +5,11 @@ from src.monitoring import get_stats, get_recent_conversations, get_db_connectio
 st.set_page_config(layout="wide", page_title="Telemetry Dashboard")
 st.title("📊 Migration Assistant Telemetry")
 
+# if st.button("🔄 Refresh Telemetry"):
+#     st.rerun()
+
 stats = get_stats()
 
-# Top Level Metrics
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Total Conversations", stats.total)
 col2.metric("Avg Response Time", f"{stats.avg_response_time:.2f}s")
@@ -16,7 +18,6 @@ col4.metric("Avg Tokens", f"{stats.avg_tokens:.0f}")
 
 st.write("---")
 
-# Charts and Data
 records = get_recent_conversations(limit=100)
 
 if records:

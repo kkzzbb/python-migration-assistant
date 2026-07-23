@@ -16,7 +16,7 @@ class Stats:
 def get_db_connection():
 	MONITOR_DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 	conn = sqlite3.connect(MONITOR_DB_PATH, check_same_thread=False)
-	# Return rows as dictionaries for easy parsing
+	
 	conn.row_factory = sqlite3.Row 
 	return conn
 

@@ -28,7 +28,7 @@ git clone https://github.com/kkzzbb/python-migration-assistant.git
 cd python-migration-assistant
 cp .env.example .env   # add OPENAI_API_KEY (and optionally GITHUB_TOKEN)
 
-docker compose up --build -d
+docker compose up --build -d	# requires Docker installed and running
 ```
 
 Then open:
