@@ -4,7 +4,7 @@ Both halves of the pipeline — retrieval, and the final LLM answer — are eval
 
 **The outputs are committed to the repo** — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_compliance_evaluations` are all checked in, so you can inspect the actual questions, answers, and judgments directly without running anything or spending API budget. The sections below describe what each script does and which committed file to open for its output; see [setup.md](setup.md#running-the-evaluation-suite) if you want to regenerate them yourself instead.
 
-## 1. Ground truth generation — `evaluation/01_generate_ground_truth.py`
+## 1. Ground Truth Generation — `evaluation/01_generate_ground_truth.py`
 
 Since there's no pre-existing Q&A dataset for "migrating FastAPI/Pydantic/SQLAlchemy code," ground truth is generated with an LLM:
 
@@ -12,7 +12,7 @@ Since there's no pre-existing Q&A dataset for "migrating FastAPI/Pydantic/SQLAlc
 - For each sampled chunk, `gpt-5.4-mini` is prompted (using structured output with a `Questions` Pydantic model) to generate **5 realistic migration questions** answerable *only* from that chunk. Questions describe upgrading existing code from an older framework version to a newer major version, emphasize "how do I rewrite this old code?" scenarios, explicitly mention framework versions where applicable, and focus on migration patterns that are easy to confuse or accidentally mix.
 - Output: `data/evaluation/ground_truth.csv` with `question`, `document` (the source chunk id), and `library` columns — up to 250 question/source pairs. **Committed to the repo** — open it directly to inspect the generated migration questions.
 
-## 2. Retrieval evaluation — `evaluation/02_evaluate_search.py`
+## 2. Retrieval Evaluation — `evaluation/02_evaluate_search.py`
 
 For every ground-truth question, each retrieval strategy is asked for its top 5 results, filtered to the question's library. A result counts as a **hit** if it comes from the same source *file* as the chunk the question was generated from (matched at the file level, i.e. ignoring the specific sub-chunk number — a question can be legitimately answered by a neighboring chunk from the same doc page).
 
@@ -39,7 +39,7 @@ python evaluation/02_evaluate_search.py
 
 ![eval_02](images/eval_02.png)
 
-## 3. RAG vs. baseline answers — `evaluation/03_evaluate_rag.py`
+## 3. RAG vs. Baseline Answers — `evaluation/03_evaluate_rag.py`
 
 For every ground-truth question, two answers are generated in parallel (10 worker threads):
 
@@ -48,7 +48,7 @@ For every ground-truth question, two answers are generated in parallel (10 worke
 
 The run is resumable: it loads any existing `data/evaluation/rag_answers.csv`, skips questions already answered, and only processes what's left — so a failed or interrupted run doesn't cost you a full re-run of the API calls. Output columns: `question`, `answer_llm` (RAG), `answer_baseline`, `answer_orig` (the source chunk's raw text, for reference), `document`. **Committed to the repo** — open `rag_answers.csv` directly to compare RAG vs. baseline answers side by side for every ground-truth question.
 
-## 4. LLM-as-judge: version compliance — `evaluation/04_llm_judge.py`
+## 4. LLM-as-judge: Version Compliance — `evaluation/04_llm_judge.py`
 
 Domain-specific evaluation measures whether the **recommended** migration solution consistently follows the requested target framework version.
 

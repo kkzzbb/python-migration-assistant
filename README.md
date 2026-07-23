@@ -37,7 +37,7 @@ Then open:
 
 The repository already includes the generated knowledge base and search indexes, so the application is ready to use after starting the containers. If you'd like to regenerate the dataset from the original documentation sources instead, see [docs/setup.md](docs/setup.md#building-the-knowledge-base).
 
-## Where this maps to the Evaluation Criteria
+## Where This Maps to the Evaluation Criteria
 
 | Criterion | What satisfies it |
 |---|---|
@@ -55,7 +55,7 @@ The repository already includes the generated knowledge base and search indexes,
 | Best practice: query rewriting | Not implemented |
 | Bonus: cloud deployment | Not implemented (runs locally via Docker Compose) |
 
-## Possible improvements
+## Possible Improvements
 
 - Replace the script-based ingestion pipeline (`scripts/build_dataset.py`) with a workflow orchestrator such as Airflow, Prefect, or Kestra to support scheduled and incremental indexing.
 - Add retrieval re-ranking (e.g., cross-encoder or reranker model) to improve document relevance.

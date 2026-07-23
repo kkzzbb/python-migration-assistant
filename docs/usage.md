@@ -1,6 +1,6 @@
 # Usage
 
-## The assistant (`app.py`)
+## The Assistant (`app.py`)
 
 Once running, `http://localhost:8501` shows:
 
@@ -27,7 +27,7 @@ If no relevant chunks are retrieved, the app tells you rather than letting the L
 4. Click **Generate Guide** and review the modernized code plus the cited Pydantic v2 doc sections.
 5. Click 👍 or 👎 to log feedback — this shows up in the telemetry dashboard.
 
-## The telemetry dashboard (`dashboard.py`)
+## The Telemetry Dashboard (`dashboard.py`)
 
 `http://localhost:8502` reads from the same monitoring database and shows:
 

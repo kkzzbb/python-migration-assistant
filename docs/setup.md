@@ -9,7 +9,7 @@
 - An OpenAI API key
 - (Optional) A GitHub personal access token, to avoid the GitHub API's low unauthenticated rate limit when fetching release notes (part of building the dataset)
 
-## Environment variables
+## Environment Variables
 
 A template is committed at the project root as `.env.example`:
 
@@ -91,7 +91,7 @@ Both containers mount `./data` as a volume, so the knowledge base, embeddings, a
 > docker compose run migration-assistant python scripts/build_dataset.py
 > ```
 
-## Building the knowledge base
+## Building the Knowledge Base
 
 The full ingestion pipeline is a single command:
 
@@ -109,7 +109,7 @@ This runs, in order:
 
 Re-running the whole pipeline is safe — already-downloaded doc versions are skipped, and chunking/embedding/indexing always regenerate from scratch from whatever is in `data/raw/`.
 
-## Running the evaluation suite
+## Running the Evaluation Suite
 
 **You don't have to run this to review the project.** The generated outputs — `data/evaluation/ground_truth.csv`, `rag_answers.csv`, and `version_compliance_evaluations.csv` — are committed to the repo, so you can open them directly to see the ground-truth questions, the RAG vs. baseline answers, and the LLM-judge verdicts without spending any API budget.
 
@@ -124,7 +124,7 @@ python evaluation/04_llm_judge.py                  # -> data/evaluation/version_
 
 `01`, `03`, and `04` call the OpenAI API (for ground-truth generation, answer generation, and judging respectively), so re-running them from scratch will incur API costs. `02` is local-only (BM25 + embeddings, no LLM calls) and safe to re-run any time. `03` is resumable — it skips questions already present in `rag_answers.csv`, so deleting just a few rows and re-running only regenerates those. If you delete a committed CSV and re-run its script, you'll overwrite the committed results with your own.
 
-## Stopping the application
+## Stopping the Application
 
 If you started the services with Docker Compose, stop and remove the containers with:
 

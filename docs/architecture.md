@@ -1,6 +1,6 @@
 # Architecture
 
-## How it works
+## How It Works
 
 1. **Ingest** — `scripts/download_docs.py` sparse-clones the docs folder of pinned branches/tags for each library and version; `scripts/fetch_github_data.py` pulls recent GitHub release notes for each repo.
 2. **Chunk** — `src/chunker.py` strips bot/CI noise (Dependabot bumps, "merge pull request", etc.) and HTML, splits each file on `#`/`##`/`###` headings, then further splits long sections into ~450-word chunks with an 80-word overlap so context isn't cut mid-explanation.
@@ -10,7 +10,7 @@
 6. **Serve** — `app.py` is a Streamlit chat-style UI with a library filter, an optional "paste your old code" box, and a source-chunk viewer.
 7. **Monitor** — every answer (cost, latency, token usage) and every 👍/👎 is logged to SQLite (`src/monitoring.py`); `dashboard.py` is a separate Streamlit app that visualizes it.
 
-## Project structure
+## Project Structure
 
 ```
 .
@@ -49,7 +49,7 @@
     └── evaluation.md                  # evaluation methodology & how to reproduce results
 ```
 
-## Tech stack
+## Tech Stack
 
 | Layer | Choice |
 |---|---|
