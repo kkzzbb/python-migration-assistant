@@ -18,6 +18,7 @@ def clear_inputs():
 	st.session_state.user_code = ""
 	st.session_state.conversation_id = None
 	st.session_state.last_result = None
+	st.session_state.feedback_given = False
 
 with st.spinner("Loading AI Models..."):
 	assistant = load_assistant()
@@ -33,6 +34,9 @@ if "conversation_id" not in st.session_state:
 
 if "last_result" not in st.session_state:
     	st.session_state.last_result = None
+
+if "feedback_given" not in st.session_state:
+    	st.session_state.feedback_given = False
 
 st.title("Python Migration Assistant")
 st.markdown("Upgrade your code for **FastAPI**, **Pydantic**, and **SQLAlchemy**")
@@ -73,13 +77,7 @@ col1, col2 = st.columns([1, 1])
 with col1:
 	generate = st.button("Generate Guide", type="primary")
 with col2:
-	st.button(
-		"Clear",
-		on_click=clear_inputs
-    	)
-
-if "last_result" not in st.session_state:
-    	st.session_state.last_result = None
+	st.button("Clear", on_click=clear_inputs)
 
 if generate:
 	if not question.strip():
@@ -93,7 +91,8 @@ if generate:
 					library=library_filter
 				)
 				st.session_state.last_result = result
-				st.session_state.conversation_id = result.get["conversation_id"]
+				st.session_state.conversation_id = result.get("conversation_id")
+				st.session_state.feedback_given = False
 			except Exception as e:
 				st.error(f"An error occurred while connecting to the OpenAI API: {str(e)}")
 if st.session_state.last_result:
@@ -122,8 +121,10 @@ if st.session_state.last_result:
 			with f_col1:
 				if st.button("👍 +1"):
 					save_feedback(st.session_state.conversation_id, score=1)
-					st.success("Thanks for the feedback!")
+					st.session_state.feedback_given = True
+					st.rerun()
 			with f_col2:
 				if st.button("👎 -1"):
 					save_feedback(st.session_state.conversation_id, score=-1)
-					st.warning("Thanks, feedback recorded.")
+					st.session_state.feedback_given = True
+					st.rerun()

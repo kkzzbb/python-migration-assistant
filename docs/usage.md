@@ -39,4 +39,6 @@ The dashboard is populated automatically as people use the assistant—there's n
 
 ## Recording a demo
 
+![App Demo](assistant.gif)
 
+![App Demo](dashboard.gif)

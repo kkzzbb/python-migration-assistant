@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
-from src.monitoring import get_stats, get_recent_conversations, get_db_connection
+from src.monitoring import get_stats, init_monitoring_db, get_recent_conversations, get_db_connection
+
+init_monitoring_db() 
 
 st.set_page_config(layout="wide", page_title="Telemetry Dashboard")
 st.title("📊 Migration Assistant Telemetry")
 
-# if st.button("🔄 Refresh Telemetry"):
-#     st.rerun()
+if st.button("🔄 Refresh Telemetry"):
+    st.rerun()
 
 stats = get_stats()
 
@@ -53,7 +55,9 @@ if records:
 		feedback_df = pd.read_sql("SELECT score, COUNT(*) as count FROM feedback GROUP BY score", conn)
 		conn.close()
 		if not feedback_df.empty:
-			st.bar_chart(feedback_df, x="score", y="count")
+			score_map = {1: "Positive (+1)", -1: "Negative (-1)"}
+			feedback_df["Feedback"] = feedback_df["score"].map(score_map).fillna(feedback_df["score"].astype(str))
+			st.bar_chart(feedback_df, x="Feedback", y="count")
 		else:
 			st.info("No feedback recorded yet.")
 	
