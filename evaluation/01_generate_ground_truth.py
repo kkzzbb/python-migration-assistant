@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import random
 from dotenv import load_dotenv
+from tqdm import tqdm
 from openai import OpenAI
 from pydantic import BaseModel
 from src.config import CHUNKS_PATH, EVAL_DIR, GROUND_TRUTH_PATH
@@ -77,7 +78,7 @@ if __name__ == "__main__":
 	ground_truth = []
 
 	print("Generating ground truth questions...")
-	for chunk in sample_chunks:
+	for chunk in tqdm(sample_chunks, desc="Generating questions", unit="chunk"):
 		records = generate_ground_truth(chunk, client)
 		ground_truth.extend(records)
 	
