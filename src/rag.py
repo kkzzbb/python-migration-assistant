@@ -100,8 +100,8 @@ class MigrationAssistant:
 
 		return {
 			"answer": answer,
-            		"sources": sources,
-            		"retrieved": len(retrieved_chunks),
+			"sources": sources,
+			"retrieved": len(retrieved_chunks),
 			"conversation_id": conversation_id,
 			"response_time": response_time,
 			"cost": cost,

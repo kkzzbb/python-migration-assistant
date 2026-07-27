@@ -88,7 +88,7 @@ Both containers mount `./data` as a volume, so the knowledge base, embeddings, a
 > **Note:** The repository already includes the generated knowledge base and search indexes, so `docker compose up --build -d` is sufficient to start the application. If you want to verify the ingestion pipeline from scratch, remove the generated data first and run:
 >
 > ```bash
-> docker compose run migration-assistant python scripts/build_dataset.py
+> docker compose run migration-assistant uv run python scripts/build_dataset.py
 > ```
 
 ## Building the Knowledge Base
@@ -96,16 +96,16 @@ Both containers mount `./data` as a volume, so the knowledge base, embeddings, a
 The full ingestion pipeline is a single command:
 
 ```bash
-python scripts/build_dataset.py
+uv run python scripts/build_dataset.py
 ```
 
 This runs, in order:
 
 1. `scripts/download_docs.py` — sparse-clones the `docs/` (or equivalent) folder for each pinned branch/tag of FastAPI, Pydantic (v1 and v2), and SQLAlchemy (1.4 and 2.0) into `data/raw/<library>/<version>/`. Already-downloaded versions are skipped on subsequent runs.
 2. `scripts/fetch_github_data.py` — pulls the most recent GitHub releases for each repo into `data/raw/<library>/releases/<library>_releases.md`.
-3. `python -m src.chunker` — cleans, splits, and chunks everything in `data/raw/` into `data/processed/chunks.json`.
-4. `python -m src.embeddings` — embeds every chunk and writes `data/processed/embeddings.npy` + `embedding_metadata.json`.
-5. `python -m src.keyword_search` — builds the BM25 keyword index at `data/indexes/keyword.db`.
+3. `uv run python -m src.chunker` — cleans, splits, and chunks everything in `data/raw/` into `data/processed/chunks.json`.
+4. `uv run python -m src.embeddings` — embeds every chunk and writes `data/processed/embeddings.npy` + `embedding_metadata.json`.
+5. `uv run python -m src.keyword_search` — builds the BM25 keyword index at `data/indexes/keyword.db`.
 
 Re-running the whole pipeline is safe — already-downloaded doc versions are skipped, and chunking/embedding/indexing always regenerate from scratch from whatever is in `data/raw/`.
 
@@ -116,10 +116,10 @@ Re-running the whole pipeline is safe — already-downloaded doc versions are sk
 If you want to regenerate them yourself, see [evaluation.md](evaluation.md) for what each script does. In short, run them in order once the knowledge base exists:
 
 ```bash
-python evaluation/01_generate_ground_truth.py   # -> data/evaluation/ground_truth.csv
-python evaluation/02_evaluate_search.py          # prints Hit Rate@5 / MRR@5 to stdout, no API calls
-python evaluation/03_evaluate_rag.py              # -> data/evaluation/rag_answers.csv
-python evaluation/04_llm_judge.py                  # -> data/evaluation/version_compliance_evaluations.csv
+uv run python -m evaluation.01_generate_ground_truth   # -> data/evaluation/ground_truth.csv
+uv run python -m evaluation.02_evaluate_search          # prints Hit Rate@5 / MRR@5 to stdout, no API calls
+uv run python -m evaluation.03_evaluate_rag              # -> data/evaluation/rag_answers.csv
+uv run python -m evaluation.04_llm_judge                  # -> data/evaluation/version_compliance_evaluations.csv
 ```
 
 `01`, `03`, and `04` call the OpenAI API (for ground-truth generation, answer generation, and judging respectively), so re-running them from scratch will incur API costs. `02` is local-only (BM25 + embeddings, no LLM calls) and safe to re-run any time. `03` is resumable — it skips questions already present in `rag_answers.csv`, so deleting just a few rows and re-running only regenerates those. If you delete a committed CSV and re-run its script, you'll overwrite the committed results with your own.

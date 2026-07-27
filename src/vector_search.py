@@ -76,13 +76,10 @@ class VectorSearcher:
 		results = []
 
 		for idx in top_indices:
-
 			if scores[idx] < 0:
 				continue
-
 			chunk = self.chunks[idx].copy()
 			chunk["score"] = float(scores[idx])
-
 			results.append(chunk)
 
 		return results
