@@ -29,15 +29,28 @@ Strategies compared:
 | Vector only | Cosine similarity over MiniLM embeddings |
 | Hybrid (1:1, 2:1, 5:1, 10:1) | RRF fusion of both, swept across keyword:vector weight ratios |
 
-The best-performing ratio from this sweep is what's hardcoded as the default in `HybridSearcher.__init__` (`kw_weight` / `vec_weight` in `src/hybrid_search.py`) — the comment above the class (`# To reflect Evaluation results, default weights...`) records that this default was chosen from these results, not guessed.
+**Results from this run:**
+
+<!-- | Strategy | Hit Rate@5 | MRR@5 |
+|---|---|---|
+| Keyword only (BM25) | 0.8800 | 0.7592 |
+| Vector only | 0.7000 | 0.4999 |
+| Hybrid (1:1) | 0.836 | 0.652 |
+| Hybrid (2:1) | 0.8280 | 0.6643 |
+| Hybrid (5:1) | 0.8480 | 0.6863 |
+| Hybrid (10:1) | 0.8720 | 0.7091 | -->
+
+![eval_02](screenshot/eval_02.png)
+
+Pure keyword search (BM25) was the strongest performer on both metrics, ahead of every hybrid weighting tested — including the most keyword-heavy blend (10:1). Increasing the keyword ratio moves hybrid's score closer to the keyword-only result but never past it.
+
+Based on this result, **keyword-only search is what's used by default** (`src/rag.py`) — the comment above the class records that this was chosen from these results, not guessed. Hybrid fusion is still implemented and evaluated (satisfying the "combining text + vector search" best practice), but is not the shipped default given it underperformed on this ground-truth set.
 
 This script only prints to stdout — its results aren't saved to a CSV, so unlike the sections below there's no committed file to inspect directly. It's local-only (BM25 + embeddings, no LLM calls), so it's free and fast to run yourself:
 
 ```bash
-python evaluation/02_evaluate_search.py
+uv run python -m evaluation.02_evaluate_search
 ```
-
-![eval_02](screenshot/eval_02.png)
 
 ## 3. RAG vs. Baseline Answers — `evaluation/03_evaluate_rag.py`
 
@@ -73,10 +86,8 @@ Version Blending Rate = % of answers flagged with contains_version_blending
 
 ### Discussion
 
-Interestingly, the baseline slightly outperformed the RAG pipeline on this metric (modern-syntax compliance), achieving approximately **1.2% higher compliance**.
-
-This evaluation measures only whether the recommended solution contains legacy syntax. It does **not** measure answer completeness, factual grounding, or whether the response is supported by the project's documentation.
+Interestingly, the picture from LLM-as-judgeis mixed rather than a clean win for either side. RAG **reduces version blending by 1.2 percentage points** relative to baseline, grounding in the actual release notes appears to help the model keep a migration internally consistent. But RAG shows a **slightly higher outdated-syntax rate** (+0.4 points) than baseline.
 
 The RAG system intentionally grounds its answers in the indexed migration guides and release documentation. As a result, it may occasionally reproduce examples containing historical or transitional syntax when those examples are present in the source material. Meanwhile, the baseline LLM relies solely on its pretrained knowledge, which can sometimes produce slightly more modern-looking code despite lacking supporting references.
 
-This result highlights that a single evaluation metric is insufficient to judge overall RAG quality. In practice, retrieval-augmented systems are primarily intended to improve factual grounding and traceability rather than simply maximize modern-syntax compliance.
+This result highlights that a single evaluation metric is insufficient to judge overall RAG quality. In practice, retrieval-augmented systems are primarily intended to improve factual grounding and traceability rather than simply maximize modern-syntax compliance which is why RAG remains the shipped approach despite the small outdated-syntax gap.
