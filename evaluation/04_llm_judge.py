@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from pydantic import BaseModel, Field
 from src.config import RAG_ANSWERS_PATH
+from pathlib import Path
 
 class VersionComplianceEvaluation(BaseModel):
 	reasoning: str = Field(
@@ -99,27 +100,32 @@ def process_record(record, client):
 	}
 
 def judge_version_compliance():
-	load_dotenv()
-	client = OpenAI()
+	output_path = Path("data/evaluation/version_compliance_evaluations.csv")
+	if output_path.is_file():
+		print(f"Found existing evaluation CSV at {output_path}. Skipping OpenAI evaluation...")
+		df_eval = pd.read_csv(output_path)
+	else:
+		load_dotenv()
+		client = OpenAI()
 
-	df_answers = pd.read_csv(RAG_ANSWERS_PATH)
-	answers = df_answers.to_dict(orient="records")
-	evaluations = []
+		df_answers = pd.read_csv(RAG_ANSWERS_PATH)
+		answers = df_answers.to_dict(orient="records")
+		evaluations = []
 
-	print("Evaluating answers using 10 parallel workers...")
-	with ThreadPoolExecutor(max_workers=10) as executor:
-		futures = [
-			executor.submit(process_record, record, client)
-			for record in answers
-		]
-		for future in tqdm(as_completed(futures), total=len(futures)):
-			evaluations.append(future.result())
+		print("Evaluating answers using 10 parallel workers...")
+		with ThreadPoolExecutor(max_workers=10) as executor:
+			futures = [
+				executor.submit(process_record, record, client)
+				for record in answers
+			]
+			for future in tqdm(as_completed(futures), total=len(futures)):
+				evaluations.append(future.result())
 
-	df_eval = pd.DataFrame(evaluations)
-	output_path = "data/evaluation/version_compliance_evaluations.csv"
-	df_eval.to_csv(output_path, index=False)
+		df_eval = pd.DataFrame(evaluations)
+		output_path = "data/evaluation/version_compliance_evaluations.csv"
+		df_eval.to_csv(output_path, index=False)
 
-	print(f"\nSaved evaluation to {output_path}")
+		print(f"\nSaved evaluation to {output_path}")
 
 	baseline_legacy_rate = df_eval["baseline_contains_legacy_syntax"].mean() * 100
 	rag_legacy_rate = df_eval["rag_contains_legacy_syntax"].mean() * 100

@@ -30,6 +30,10 @@ def calculate_cost(usage):
 		return input_cost + output_cost
 	return 0.0
 
+# HybridSearcher defaults to keyword-only (kw_weight=1.0, vec_weight=0.0)
+# per evaluation/02_evaluate_search.py results -- see docs/evaluation.md.
+# Hybrid RRF fusion remains available by calling
+# self.searcher.search(..., kw_weight=X, vec_weight=Y) explicitly.
 class MigrationAssistant:
 	def __init__(self):
 		self.searcher = HybridSearcher()

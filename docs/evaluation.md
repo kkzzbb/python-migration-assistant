@@ -52,6 +52,8 @@ This script only prints to stdout — its results aren't saved to a CSV, so unli
 uv run python -m evaluation.02_evaluate_search
 ```
 
+**Note:** The evaluation results shown above were generated using the committed knowledge base and indexes in `data/`. The ingestion pipeline fetches the latest upstream documentation and release notes, so running `scripts/build_dataset.py` at a later time may produce different retrieval results because the source material may have changed.
+
 ## 3. RAG vs. Baseline Answers — `evaluation/03_evaluate_rag.py`
 
 For every ground-truth question, two answers are generated in parallel (10 worker threads):

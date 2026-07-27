@@ -28,10 +28,10 @@ def download_docs():
 	for library, versions in LIBRARIES.items():
 		for v in versions:
 			target_dir = base_dir / library / v["version"]
-		if target_dir.exists():
-			print(f"{library} {v['version']} docs already downloaded. Skipping.")
-			continue
-		print(f"Downloading {library} {v['version']} docs...")
+			if target_dir.exists():
+				print(f"{library} {v['version']} docs already downloaded. Skipping.")
+				continue
+			print(f"Downloading {library} {v['version']} docs...")
 		url = REPO_URLS[library]
 
 		try:

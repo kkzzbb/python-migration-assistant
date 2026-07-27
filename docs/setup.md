@@ -50,11 +50,11 @@ This project uses the OpenAI Responses API.
 OPENAI_API_KEY=your_api_key_here
 ```
 
-> **Note:** OpenAI API access is a paid service. Depending on your account, you may need to add billing information or purchase API credits before requests will succeed. Running the application and the evaluation scripts will consume API tokens and may incur charges. The evaluation scripts `01_generate_ground_truth.py`, `03_evaluate_rag.py`, and `04_llm_judge.py` make OpenAI API calls and therefore consume API tokens. The repository includes the generated evaluation CSV files, so reviewers do not need to rerun them unless they want to regenerate the results.
+**Note:** OpenAI API access is a paid service. Depending on your account, you may need to add billing information or purchase API credits before requests will succeed. Running the application and the evaluation scripts will consume API tokens and may incur charges. The evaluation scripts `01_generate_ground_truth.py`, `03_evaluate_rag.py`, and `04_llm_judge.py` make OpenAI API calls and therefore consume API tokens. The repository includes the generated evaluation CSV files, so reviewers do not need to rerun them unless they want to regenerate the results.
 
 ## Option A — run locally with `uv`
 
-> **Note:** The repository already includes the generated knowledge base and search indexes, so you can **skip Step 2** if you simply want to run the application. Run it only if you want to regenerate the dataset from the original documentation sources.
+**Note:** The repository already includes the generated knowledge base and search indexes, so you can **skip Step 2** if you simply want to run the application. Run it only if you want to regenerate the dataset from the original documentation sources.
 
 ```bash
 # 1. Install dependencies (pinned versions from uv.lock)
@@ -85,11 +85,12 @@ This builds one image (from the shared `Dockerfile`) and starts two containers f
 
 Both containers mount `./data` as a volume, so the knowledge base, embeddings, and SQLite databases persist on the host and are shared between the two services.
 
-> **Note:** The repository already includes the generated knowledge base and search indexes, so `docker compose up --build -d` is sufficient to start the application. If you want to verify the ingestion pipeline from scratch, remove the generated data first and run:
->
-> ```bash
-> docker compose run migration-assistant uv run python scripts/build_dataset.py
-> ```
+**Note:** The repository already includes the generated knowledge base and search indexes, so `docker compose up --build -d` is sufficient to start the application.If you want to verify the ingestion pipeline from fresh upstream sources, remove the existing raw dataset and generated artifacts first:
+
+```bash
+rm -rf data/raw data/processed data/indexes
+docker compose run migration-assistant uv run python scripts/build_dataset.py
+ ```
 
 ## Building the Knowledge Base
 
@@ -107,7 +108,19 @@ This runs, in order:
 4. `uv run python -m src.embeddings` — embeds every chunk and writes `data/processed/embeddings.npy` + `embedding_metadata.json`.
 5. `uv run python -m src.keyword_search` — builds the BM25 keyword index at `data/indexes/keyword.db`.
 
-Re-running the whole pipeline is safe — already-downloaded doc versions are skipped, and chunking/embedding/indexing always regenerate from scratch from whatever is in `data/raw/`.
+Re-running the whole pipeline is safe — chunking, embedding, and indexing always regenerate from scratch from whatever exists in `data/raw/`.
+
+By default, already-downloaded documentation versions under `data/raw/` are skipped to avoid unnecessary GitHub downloads. If you want to fetch the latest upstream documentation and rebuild the knowledge base from fresh sources, remove the existing raw dataset first:
+
+```bash
+rm -rf data/raw
+uv run python scripts/build_dataset.py
+```
+
+**Note about reproducibility:**  
+The ingestion pipeline intentionally fetches current documentation and release notes from upstream GitHub repositories because this project focuses on migrating applications to the latest framework versions. As upstream documentation changes, rebuilding the knowledge base may produce different chunks, embeddings, indexes, and evaluation results.
+
+The repository already includes the generated knowledge base and evaluation outputs used for the reported metrics. To reproduce the exact evaluation results, use the committed files under `data/` rather than rebuilding the dataset.
 
 ## Running the Evaluation Suite
 
