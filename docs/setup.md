@@ -60,7 +60,7 @@ OPENAI_API_KEY=your_api_key_here
 # 1. Install dependencies (pinned versions from uv.lock)
 uv sync
 
-# 2. Build the knowledge base (optional), see [Building the Knowledge Base](#Building the Knowledge Base) below
+# 2. Build the knowledge base (optional), see (#Building the Knowledge Base) below
 uv run python scripts/build_dataset.py
 
 # 3. Run the assistant
