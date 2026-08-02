@@ -42,9 +42,9 @@ The repository already includes the generated knowledge base and search indexes,
 | Criterion | What satisfies it |
 |---|---|
 | Problem description | See [Problem](#problem) above |
-| Retrieval flow | Knowledge base (keyword + vector search available over docs + release notes) **and** an LLM are both used — `src/hybrid_search.py`, `src/rag.py` |
-| Retrieval evaluation | Multiple retrieval approaches evaluated (keyword-only, vector-only, 4 hybrid weightings); keyword-only BM25 scored highest on both Hit Rate@5 and MRR@5 and is the shipped default — `evaluation/02_evaluate_search.py`  |
-| LLM evaluation | Multiple approaches evaluated (RAG vs. no-context baseline). An LLM judge measures both outdated syntax usage and version blending in the recommended migration solution; results are mixed (RAG lowers version blending, baseline is marginally cleaner on outdated syntax) — RAG is used for its grounding/traceability benefit, which this metric doesn't capture — `evaluation/04_llm_judge.py` |
+| Retrieval flow | Knowledge base (keyword + vector search available over docs + release notes) **and** an LLM are both used  (`src/hybrid_search.py`, `src/rag.py`) |
+| Retrieval evaluation | Multiple retrieval approaches evaluated (keyword-only, vector-only, 4 hybrid weightings); keyword-only BM25 scored highest on both Hit Rate@5 and MRR@5 and is the shipped default (`evaluation/02_evaluate_search.py`)  |
+| LLM evaluation | Two answer-generation approaches are evaluated: the RAG pipeline and a no-context LLM baseline. An LLM judge measures outdated syntax usage and version blending in the recommended migration solution (`evaluation/03_evaluate_rag.py`, `evaluation/04_llm_judge.py`) |
 | Interface | Streamlit web UI `app.py` for the migration assistant and a Streamlit telemetry dashboard `dashboard.py` for monitoring and feedback visualization. |
 | Ingestion pipeline | Automated with a single script, `scripts/build_dataset.py` (chains docs download → release notes → chunk → embed → index). No tool (Airflow/Prefect/Kestra) is used yet — see [Possible improvements](#possible-improvements) |
 | Monitoring | Streamlit telemetry dashboard (`dashboard.py`) with  **5 visualizations** (cost over time, response time over time, per-library usage, token usage distribution, feedback score distribution), **4 KPI cards** (total conversations, average response time, total cost, average tokens), plus recent conversation logs |
