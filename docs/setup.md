@@ -7,7 +7,7 @@
 - `git` (the ingestion pipeline clones docs directly from GitHub)
 - Docker + Docker Compose, if you'd rather not install anything locally
 - An OpenAI API key
-- (Optional) A GitHub personal access token, to avoid the GitHub API's low unauthenticated rate limit when fetching release notes (part of building the dataset)
+- (Optional) A GitHub personal access token. Currently, the project only fetches 3 libraries, which is well below GitHub's anonymous rate limit (60 requests/hour). This is kept as a future-proofing option for when the project scales to fetch data for 60+ libraries.
 
 ## Environment Variables
 
@@ -23,7 +23,7 @@ A template is committed at the project root as `.env.example`:
 
 OPENAI_API_KEY=your_actual_api_key_goes_here
 
-# Optional (only needed when rebuilding the dataset)
+# Optional (Only needed if the project scales to >60 libraries in the future)
 GITHUB_TOKEN=your_github_personal_access_token
 ```
 
