@@ -96,7 +96,7 @@ By default, already-downloaded docs under `data/raw/` are skipped. To fetch fres
 rm -rf data/raw data/processed data/indexes
 ```
 
-The, run the full ingestion pipeline with a single command:
+Then, run the full ingestion pipeline with a single command:
 
 **Using local `uv`:**
 ```bash
