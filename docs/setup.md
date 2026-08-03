@@ -6,8 +6,8 @@
 - [`uv`](https://github.com/astral-sh/uv) for dependency management
 - `git` (the ingestion pipeline clones docs directly from GitHub)
 - Docker + Docker Compose, if you'd rather not install anything locally
-- An OpenAI API key
-- (Optional) A GitHub personal access token. Currently, the project only fetches 3 libraries, which is well below GitHub's anonymous rate limit (60 requests/hour). This is kept as a future-proofing option for when the project scales to fetch data for 60+ libraries.
+- **OpenAI API key** (Required for RAG and LLM evaluation)
+- GitHub Personal Access Token (Optional: Only needed if rebuilding the dataset for 60+ libraries to bypass the 60 requests/hour anonymous limit.)
 
 ## Environment Variables
 
@@ -33,10 +33,6 @@ Copy it and fill in a real key:
 cp .env.example .env
 ```
 
-`OPENAI_API_KEY` is required — `src/rag.py` and every script under `evaluation/` instantiate `OpenAI()`, which reads it from the environment (loaded via `load_dotenv()`).
-
-`GITHUB_TOKEN` is optional. It is only used by `scripts/fetch_github_data.py` when downloading GitHub release notes, allowing higher GitHub API rate limits. The script also works without a token, subject to GitHub's unauthenticated rate limits.
-
 ### Obtaining an OpenAI API key
 
 This project uses the OpenAI Responses API.
@@ -50,11 +46,10 @@ This project uses the OpenAI Responses API.
 OPENAI_API_KEY=your_api_key_here
 ```
 
->**Note:** OpenAI API access is a paid service. Depending on your account, you may need to add billing information or purchase API credits before requests will succeed. Running the application and the evaluation scripts will consume API tokens and may incur charges. The evaluation scripts `01_generate_ground_truth.py`, `03_evaluate_rag.py`, and `04_llm_judge.py` make OpenAI API calls and therefore consume API tokens. The repository includes the generated evaluation CSV files, so reviewers do not need to rerun them unless they want to regenerate the results.
+>**Note:** OpenAI API access is a paid service. Depending on your account, you may need to add billing information or purchase API credits before requests will succeed. Running the application and the evaluation scripts will consume API tokens and incur charges. The evaluation scripts `01_generate_ground_truth.py`, `03_evaluate_rag.py`, and `04_llm_judge.py` make OpenAI API calls and therefore consume API tokens. The repository includes the generated evaluation CSV files, so reviewers do not need to rerun them unless they want to regenerate the results.
 
-## Option A — run locally with `uv`
-
->**Note:** The repository already includes the generated knowledge base and search indexes, so you can **skip Step 2** if you simply want to run the application. Run it only if you want to regenerate the dataset from the original documentation sources.
+## Running the Application
+### Option A — run locally with `uv`
 
 ```bash
 # 1. Install dependencies (pinned versions from uv.lock)
@@ -70,7 +65,7 @@ uv run streamlit run app.py --server.port=8501
 uv run streamlit run dashboard.py --server.port=8502
 ```
 
-## Option B — run with Docker Compose
+### Option B — run with Docker Compose
 
 ```bash
 docker compose up --build -d
@@ -94,10 +89,23 @@ docker compose run migration-assistant uv run python scripts/build_dataset.py
 
 ## Building the Knowledge Base
 
-The full ingestion pipeline is a single command:
+Re-running the whole pipeline is safe — chunking, embedding, and indexing always regenerate from scratch from whatever exists in `data/raw/`.
+By default, already-downloaded docs under `data/raw/` are skipped. To fetch fresh upstream documentation and rebuild from scratch, clear the existing data first:
 
 ```bash
+rm -rf data/raw data/processed data/indexes
+```
+
+The, run the full ingestion pipeline with a single command:
+
+**Using local `uv`:**
+```bash
 uv run python scripts/build_dataset.py
+```
+
+**Using Docker Compose:**
+```bash
+docker compose run --build migration-assistant uv run python scripts/build_dataset.py
 ```
 
 This runs, in order:
@@ -108,18 +116,7 @@ This runs, in order:
 4. `uv run python -m src.embeddings` — embeds every chunk and writes `data/processed/embeddings.npy` + `embedding_metadata.json`.
 5. `uv run python -m src.keyword_search` — builds the BM25 keyword index at `data/indexes/keyword.db`.
 
-Re-running the whole pipeline is safe — chunking, embedding, and indexing always regenerate from scratch from whatever exists in `data/raw/`.
-
-By default, already-downloaded documentation versions under `data/raw/` are skipped to avoid unnecessary GitHub downloads. If you want to fetch the latest upstream documentation and rebuild the knowledge base from fresh sources, remove the existing raw dataset first:
-
-```bash
-rm -rf data/raw
-uv run python scripts/build_dataset.py
-```
-
->**Note about reproducibility:** The ingestion pipeline intentionally fetches current documentation and release notes from upstream GitHub repositories because this project focuses on migrating applications to the latest framework versions. As upstream documentation changes, rebuilding the knowledge base may produce different chunks, embeddings, indexes, and evaluation results.
-
-The repository already includes the generated knowledge base and evaluation outputs used for the reported metrics. To reproduce the exact evaluation results, use the committed files under `data/` rather than rebuilding the dataset.
+>**Note about the Knowledge Base:** The ingestion pipeline intentionally fetches current documentation and release notes from upstream GitHub repositories because this project focuses on migrating applications to the latest framework versions. As upstream documentation changes, rebuilding the knowledge base may produce different chunks, embeddings, indexes, and evaluation results.
 
 ## Running the Evaluation Suite
 
@@ -135,6 +132,8 @@ uv run python -m evaluation.04_llm_judge                  # -> data/evaluation/v
 ```
 
 `01`, `03`, and `04` call the OpenAI API (for ground-truth generation, answer generation, and judging respectively), so re-running them from scratch will incur API costs. `02` is local-only (BM25 + embeddings, no LLM calls) and safe to re-run any time. `03` is resumable — it skips questions already present in `rag_answers.csv`, so deleting just a few rows and re-running only regenerates those. If you delete a committed CSV and re-run its script, you'll overwrite the committed results with your own.
+
+>**Note:**The repository already includes the generated knowledge base and evaluation outputs used for the reported metrics. To reproduce the exact evaluation results, use the committed files under `data/` rather than rebuilding the dataset.
 
 ## Stopping the Application
 
